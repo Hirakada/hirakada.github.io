@@ -15,7 +15,8 @@
   "description": "",
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
-    "iconify-icon": "^3.0.0"
+    "iconify-icon": "^3.0.0",
+    "typed.js": "v2.1.0"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
