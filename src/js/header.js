@@ -1,16 +1,18 @@
+import logoWhiteSvg from '../assets/img/logo-white.svg'
+
 function createHeaderHTML() {
     return `
         <header>
             <div class="header-content">
-                <img src="/src/assets/img/logo-white.svg" alt="Portfolio Logo">
+                <img src="${logoWhiteSvg}" alt="Portfolio Logo">
                 <nav>
                     <ul>
-                        <li><a href="/index.html">My</a></li>
-                        <li><a href="/projects/index.html">Projects</a></li>
-                        <li><a href="/docs/index.html">Documentation</a></li>
+                        <li><a href="/">My</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/docs/">Documentation</a></li>
                     </ul>
                 </nav>
-                <a class="contact" href="/contact/index.html">Contact</a>
+                <a class="contact" href="/contact/">Contact</a>
             </div>
         </header>
     `;
