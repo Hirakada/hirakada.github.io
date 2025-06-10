@@ -1,67 +1,67 @@
 :root {
-    /* Sizing & Spacing Variables */
     --header-padding-y: 1rem;
     --header-padding-x: 2rem;
     --header-padding-y-md: 1.5rem;
     --header-padding-x-md: 4rem;
     --header-padding-y-lg: 2rem;
     --header-padding-x-lg: 6rem;
-
+    
     --section-padding-y: 4rem;
     --section-padding-x: 1rem;
     --section-padding-y-md: 6rem;
     --section-padding-x-md: 2rem;
     --section-padding-y-lg: 8rem;
     --section-padding-x-lg: 2rem;
-
     --footer-padding-y: 2rem;
     --footer-padding-x: 2rem;
     --footer-padding-y-md: 2.5rem;
     --footer-padding-x-md: 4rem;
 
+    --md-surface-base: #121212;
+    --md-background: #121212;
+    --md-surface-elevated-1dp: #1D1D1D;
+    --md-surface-elevated-2dp: #212121;
+    --md-surface-elevated-3dp: #242424;
+    --md-surface-elevated-4dp: #272727;
+    --md-surface-elevated-6dp: #2C2C2C;
+    --md-surface-elevated-8dp: #2F2F2F;
+    --md-surface-elevated-12dp: #353535;
+    --md-surface-elevated-16dp: #383838;
+    --md-surface-elevated-24dp: #424242;
+    --color-secondary-bg: var(--md-surface-elevated-1dp);
 
-    /* Background & Primary Colors */
-    --background-start: #171719;
-    --background-end: #201f1f;
-    --color-secondary-bg: #151515;
+    --text-primary: rgba(255, 255, 255, 0.87);
+    --text-secondary: rgba(255, 255, 255, 0.60);
+    --text-heading: rgba(255, 255, 255, 0.87);
+    --text-disabled: rgba(255, 255, 255, 0.38);
+    --button-default: rgba(255, 255, 255, 0.12);
+    --button-hover: rgba(255, 255, 255, 0.24);
+    --button-active: rgba(255, 255, 255, 0.36);
+    
+    --accent-red: #D50000;
+    --accent-dark-red: #B71C1C;
+    --accent-light-red: #E57373;
+    --color-accent-red-rgb: 213, 0, 0;
+    --accent-dark-specific-red: #B00020;
+    --accent-dark-specific-red-light: #CC3333;
+    --accent-dark-specific-red-dark: #800010;
 
+    --error-color: #B00020;
 
-    /* Text Colors */
-    --text-primary: #f1f1f1;
-    --text-secondary: #bfbfbf;
-    --text-heading: #F5F5F5;
+    --border-color: rgba(255, 255, 255, 0.12);
 
-
-    /* Button Colors */
-    --button-default: rgba(34, 34, 34, 0.6);
-    --button-hover: rgba(24, 24, 24, 0.7);
-    --button-active: rgba(17, 17, 17, 0.8);
-
-
-    /* Accent Colors */
-    --accent-red: #e63946;
-    --accent-dark-red: #b71c1c;
-    --accent-light-red: #ff4d4d;
-    --color-accent-red-rgb: 211, 47, 47;
-
-
-    /* Borders & Glass Effects */
-    --border-color: rgba(255, 255, 255, 0.2);
     --color-glass-border: rgba(235, 235, 235, 0.06);
     --glass-blur: blur(1rem);
-    --glass-opacity: 0.2;
-    --color-glass-bg: rgba(21, 21, 21, 0.7);
+    --glass-opacity: 0.15;
+    --color-glass-bg: rgba(18, 18, 18, 0.7);
 
+    --glow-subtle: 0 0 10px rgba(213, 0, 0, 0.15);
+    --glow-text-subtle: 0 0 6px rgba(229, 115, 115, 0.3);
+    --glow-button-hover: 0 0 25px rgba(213, 0, 0, 0.3);
 
-    /* Shadows */
-    --shadow-soft: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-    --shadow-strong: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.2);
-    --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.25);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.35);
-    --shadow-glass: 0 4px 12px rgba(0, 0, 0, 0.15);
-    
-    
-    /* Transitions */
+    --shadow-subtle-red: 0 2px 10px rgba(213, 0, 0, 0.08);
+    --text-heading-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
     --gentle-transition: 0.8s cubic-bezier(0.47, 0, 0.23, 1.38);
     --quick-transition: 0.3s ease-in-out;
 }

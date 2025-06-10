@@ -1,8 +1,11 @@
 @import url('./root.css');
 @import url('./home.css');
+@import url('./header.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -58,6 +61,7 @@
     animation-range: entry 0% cover 40%;
   }
 }
+
 @layer components {
   .text-high-emphasis { @apply text-text-primary; }
   .text-medium-emphasis { @apply text-text-secondary; }
