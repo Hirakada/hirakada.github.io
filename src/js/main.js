@@ -49,6 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(element);
     }
 
-    observeElement("name", () => autoType("name", ["IRAKADA", "izkya Raka Priananda"]));
+    observeElement("role", () => autoType("role", ["UI/UX Designer", "Frontend Developer", "Digital Marketer"]));
     observeElement("dots", () => autoType("dots", ["..."], { typeSpeed: 150, backSpeed: 0, backDelay: 500, loop: false }));
 });

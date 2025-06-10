@@ -1,152 +1,74 @@
-@import url('./root.css');
-@import url('./home.css');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif;
-    background: var(--md-background);
-    color: var(--text-primary);
-    line-height: 1.5;
-    min-height: 100vh;
+.hero-section {
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.role {
+    color: var(--color-primary);
+    min-height: clamp(1.75rem, 4.5vw, 2.5rem);
+    text-align: center; 
+}
+
+.auto-type {
+    display: inline-block; 
+    min-width: 25rem; 
+    white-space: nowrap;
+}
+
+.social-list {
+    width: fit-content;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: background-color var(--quick-transition), color var(--quick-transition);
-    user-select: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--text-heading);
-    text-shadow: var(--text-heading-shadow);
-  }
-  p {
-    color: var(--text-secondary);
-  }
-  a:focus-visible,
-  button:focus-visible,
-  textarea:focus-visible {
-    outline: 2px solid var(--accent-red);
-    outline-offset: 2px;
-    border-radius: 0.5rem;
-  }
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: var(--md-surface-base); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb { background: var(--accent-red); border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark-red); }
-  ::selection { background: var(--accent-red); color: var(--text-heading); }
-  ::-moz-selection { background: var(--accent-red); color: var(--text-heading); }
-  section {
+    gap: 1.125rem;
+}
+
+.social-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
-    min-height: 100vh;
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    cursor: pointer;
     position: relative;
-    animation: appearOnScroll linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
+    transition: var(--quick-transition);
+    color: var(--text-high-emphasis);
+    text-decoration: none;
 }
-@layer components {
-  .text-high-emphasis { @apply text-text-primary; }
-  .text-medium-emphasis { @apply text-text-secondary; }
-  .text-disabled-emphasis { @apply text-text-disabled; }
-  .md-elevation-1 { @apply bg-md-surface-elevated-1dp; }
-  .md-elevation-2 { @apply bg-md-surface-elevated-2dp; }
-  .md-elevation-3 { @apply bg-md-surface-elevated-3dp; }
-  .md-elevation-4 { @apply bg-md-surface-elevated-4dp; }
-  .md-elevation-6 { @apply bg-md-surface-elevated-6dp; }
-  .md-elevation-8 { @apply bg-md-surface-elevated-8dp; }
-  .md-elevation-12 { @apply bg-md-surface-elevated-12dp; }
-  .md-elevation-16 { @apply bg-md-surface-elevated-16dp; }
-  .md-elevation-24 { @apply bg-md-surface-elevated-24dp; }
-  .text-content-p {
-    @apply text-p-content text-medium-emphasis mb-4;
-  }
-  .text-caption {
-    @apply text-caption text-medium-emphasis;
-  }
-  .regular-button {
-    @apply inline-flex justify-center items-center gap-2 px-6 py-3 border border-transparent rounded-md font-medium text-base bg-button-default text-text-primary transition-colors duration-quick shadow-none no-underline w-fit;
-  }
-  .regular-button:hover {
-    @apply bg-button-hover scale-100;
-  }
-  .regular-button:active {
-    @apply bg-button-active scale-97;
-  }
-  .glass {
-    @apply bg-glass-bg backdrop-blur-glass rounded-lg border border-glass-border p-6 shadow-none w-[90%] max-w-5xl;
-  }
-  .temporary {
-    @apply w-full h-[5vh] py-[1vh] z-[1000] bg-accent-red shadow-none overflow-hidden text-text-primary relative;
-  }
-  .temporary span {
-    @apply whitespace-nowrap absolute left-full text-base;
-    animation: scroll-left 10s linear infinite;
-  }
-  .red-glowing-element {
-    box-shadow: 0 0 15px var(--accent-red), 0 0 30px rgba(213, 0, 0, 0.4), 0 0 45px rgba(213, 0, 0, 0.2);
-    @apply transition-shadow duration-quick;
-  }
-  .red-glowing-element:hover {
-    box-shadow: 0 0 25px var(--accent-light-red), 0 0 50px rgba(213, 0, 0, 0.6), 0 0 75px rgba(213, 0, 0, 0.3);
-  }
-  .red-glowing-element.animate-pulse-slow {
-    animation: pulseSlow 8s infinite ease-in-out, glowPulse 3s infinite alternate ease-in-out;
-  }
+.social-button::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-primary);
+    transition: var(--quick-transition);
 }
-@keyframes appearOnScroll {
-    from {
-        opacity: 0;
-        scale: 0.5;
+.social-button:hover::after {
+    width: 100%;
+    left: 0;
+}
+.social-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    color: var(--color-primary);
+}
+@media (min-width: 768px) {
+    .hero-section {
+        gap: 1.875rem;
     }
-    to {
-        opacity: 1;
-        scale: 1;
+    .social-button {
+        font-size: 1.5rem;
+    }
+    .regular-button iconify-icon {
+        font-size: 20px;
+    }
+    .line {
+        display: block;
     }
 }
-@keyframes scroll-left {
-    to {
-        transform: translateX(calc(-100% - 100vw));
-    }
-}
-@keyframes fadeInFromBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-@keyframes pulseSlow {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.2;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 0.3;
-    }
-}
-@keyframes glowPulse {
-    from {
-        box-shadow: 0 0 15px var(--accent-red), 0 0 30px rgba(213, 0, 0, 0.4);
-    }
-    to {
-        box-shadow: 0 0 25px var(--accent-light-red), 0 0 50px rgba(213, 0, 0, 0.6);
+@media (min-width: 1024px) {
+    .hero-section {
+        gap: 2rem;
     }
 }
