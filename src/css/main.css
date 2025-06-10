@@ -29,7 +29,6 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    /* margin: 0; This line is now redundant due to the universal reset above */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -38,27 +37,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+    font-size: 2.5rem;
     letter-spacing: -0.015625em;
 }
 h2 {
-    font-size: clamp(1.4rem, 3.8vw, 2rem);
+    font-size: 2rem;
     letter-spacing: -0.008333em;
 }
 h3 {
-    font-size: clamp(1.1rem, 3.2vw, 1.75rem);
+    font-size: 1.75rem;
     letter-spacing: 0em;
 }
 h4 {
-    font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+    font-size: 1.4rem;
     letter-spacing: 0.00735em;
 }
 h5 {
-    font-size: clamp(0.85rem, 2.4vw, 1.2rem);
+    font-size: 1.2rem;
     letter-spacing: 0em;
 }
 h6 {
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-size: 1rem;
     letter-spacing: 0.0075em;
 }
 
@@ -295,14 +294,23 @@ section {
     }
 }
 
-@media (min-width: 768px) {
-    section {
-        padding: var(--section-padding-y-md) var(--global-padding-x-md);
+@media (max-width: 1023px) {
+    h1 {
+        font-size: clamp(1.75rem, 4.5vw, 2.5rem);
     }
-}
-
-@media (min-width: 1024px) {
-    section {
-        padding: var(--section-padding-y-lg) var(--global-padding-x-lg);
+    h2 {
+        font-size: clamp(1.4rem, 3.8vw, 2rem);
+    }
+    h3 {
+        font-size: clamp(1.1rem, 3.2vw, 1.75rem);
+    }
+    h4 {
+        font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+    }
+    h5 {
+        font-size: clamp(0.85rem, 2.4vw, 1.2rem);
+    }
+    h6 {
+        font-size: clamp(0.75rem, 2vw, 1rem);
     }
 }

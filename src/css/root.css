@@ -1,19 +1,20 @@
 :root {
-    --global-padding-x: 2rem;
-    --global-padding-x-md: 4rem;
-    --global-padding-x-lg: 6rem;
+    --global-padding-x: 6rem;
+    --header-padding-y: 2rem;
+    --section-padding-y: 8rem;
+    --footer-padding-y: 4rem;
+    
+    --global-padding-x-tablet: 4rem;
+    --global-padding-x-mobile: 2rem;
 
-    --header-padding-y: 1rem;
-    --header-padding-y-md: 1.5rem;
-    --header-padding-y-lg: 2rem;
-    
-    --section-padding-y: 4rem;
-    --section-padding-y-md: 6rem;
-    --section-padding-y-lg: 8rem;
-    
-    --footer-padding-y: 2rem;
-    --footer-padding-y-md: 2.5rem;
-    --footer-padding-y-lg: 4rem;
+    --header-padding-y-tablet: 1.5rem;
+    --header-padding-y-mobile: 1rem;
+
+    --section-padding-y-tablet: 6rem;
+    --section-padding-y-mobile: 4rem;
+
+    --footer-padding-y-tablet: 2.5rem;
+    --footer-padding-y-mobile: 2rem;
 
     --color-primary: #B00020;
     --color-primary-variant: #C00020;
@@ -26,8 +27,8 @@
     --color-on-primary: #E0E0E0; 
     --color-on-secondary: #E0E0E0;
     --color-on-background: #E0E0E0;
-    --color-on-surface: #E0E0E0;   
-    --color-on-error: #E0E0E0;     
+    --color-on-surface: #E0E0E0;
+    --color-on-error: #E0E0E0;
 
     --color-primary-rgb: 176, 0, 32;
     --color-primary-variant-rgb: 192, 0, 32;
@@ -40,8 +41,8 @@
     --color-on-primary-rgb: 224, 224, 224;
     --color-on-secondary-rgb: 224, 224, 224;
     --color-on-background-rgb: 224, 224, 224;
-    --color-on-surface-rgb: 224, 224, 224;   
-    --color-on-error-rgb: 224, 224, 224;     
+    --color-on-surface-rgb: 224, 224, 224;
+    --color-on-error-rgb: 224, 224, 224;
     
     --text-high-emphasis: var(--color-on-background); 
     --text-medium-emphasis: rgba(var(--color-on-background-rgb), 0.70); 
@@ -71,4 +72,22 @@
 
     --gentle-transition: 0.8s cubic-bezier(0.47, 0, 0.23, 1.38);
     --quick-transition: 0.3s ease-in-out;
+}
+
+@media (max-width: 1023px) {
+    :root {
+        --global-padding-x: var(--global-padding-x-tablet);
+        --header-padding-y: var(--header-padding-y-tablet);
+        --section-padding-y: var(--section-padding-y-tablet);
+        --footer-padding-y: var(--footer-padding-y-tablet);
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --global-padding-x: var(--global-padding-x-mobile);
+        --header-padding-y: var(--header-padding-y-mobile);
+        --section-padding-y: var(--section-padding-y-mobile);
+        --footer-padding-y: var(--footer-padding-y-mobile);
+    }
 }
