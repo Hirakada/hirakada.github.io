@@ -4,49 +4,21 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules/
-jspm_packages/
+node_modules
+dist
+dist-ssr
+*.local
 
-# Optional npm cache directory
-.npm/
-
-# Optional eslint cache
-.eslintcache
-
-# Optional Prettier cache
-.prettiercache
-
-# Production artifacts
-build/
-dist/
-public/build/
-.svelte-kit/ # SvelteKit specific
-.next/       # Next.js specific
-.nuxt/       # Nuxt.js specific
-out/         # Common build output
-
-# Compiled output
-*.js.map
-*.css.map
-
-# Environments
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.staging.local
-
-# IDE and editor files
-.vscode/        # VSCode specific settings/configs
-.idea/          # IntelliJ IDEA specific settings
-*.iml
-*.swp
-*.swo
-.DS_Store       # macOS specific desktop services store
-Thumbs.db       # Windows thumbnail cache
-npm-debug.log*
-yarn-debug.log*
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
