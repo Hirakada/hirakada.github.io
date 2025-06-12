@@ -6,7 +6,7 @@ function FeaturedProject({ id, coverImage, title, collaborators, attributes, pro
         <div 
           className="featuredProject" 
           onClick={() => {
-            console.log('URL being opened:', projectUrl); // ADD THIS LINE
+            console.log('URL being opened:', projectUrl);
             window.open(projectUrl, '_blank');
           }}
         >
@@ -16,22 +16,22 @@ function FeaturedProject({ id, coverImage, title, collaborators, attributes, pro
 
             <div className="cardSection"> 
                 {attributes && attributes.length > 0 && (
-                    <ul className="attributesList">
-                        {attributes.map(attribute => (
-                            <li key={attribute} className="attributeItem">
-                                {attribute}
-                            </li>
-                        ))}
-                    </ul>
+                <ul className="attributesList">
+                    {attributes.map(attribute => (
+                    <li key={attribute.id} className="attributeItem">
+                        {attribute.name}
+                    </li>
+                    ))}
+                </ul>
                 )}
 
                 {collaborators && collaborators.length > 0 && (
                     <ul className="collaboratorsList">
                         {collaborators.map(collaborator => (
                             <li key={collaborator.id} className="collaboratorItem">
-                                {collaborator.profile_image_url && (
+                                {collaborator.profileImage && (
                                     <img
-                                        src={collaborator.profile_image_url}
+                                        src={collaborator.profileImage}
                                         alt={`Profile of ${collaborator.name}`}
                                         className="collaborator-profile-pic"
                                     />

@@ -1,37 +1,102 @@
 .hero-section {
-    gap: 2rem;
+    gap: clamp(1.5rem, 4vw, 2rem);
     text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .role {
     color: var(--color-primary);
-    min-height: 2.5rem;
+    min-height: clamp(1.75rem, 4.5vw, 2.5rem);
     text-align: center; 
 }
 
 .auto-type {
     display: inline-block; 
-    min-width: 25rem; 
-    white-space: nowrap;
+    min-width: clamp(min-content, 60vw, max-content); 
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    opacity: 0;
+    animation: fadeInTyped 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInTyped {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .social-list {
     width: fit-content;
     display: flex;
     gap: 1.125rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@media (max-width: 1023px) {
-    .hero-section {
-        gap: 1.875rem;
+.key-skills-section {
+    width: 100%;
+    padding: var(--section-padding-y) var(--global-padding-x);
+    background-color: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 0;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.75rem);
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.featured-projects-section {
+    padding: var(--section-padding-y) var(--global-padding-x);
+    background-color: var(--color-background);
+    text-align: center;
+}
+
+.featured-projects-section h2 {
+    margin-bottom: 2rem;
+}
+
+.featured-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 481px) {
+    .featured-projects-grid {
+        grid-template-columns: repeat(2, minmax(280px, 350px)); 
     }
 }
 
-@media (max-width: 767px) {
-    .hero-section {
-        gap: 1.5rem;
-    }
-    .role {
-        min-height: clamp(1.75rem, 4.5vw, 2.5rem);
+@media (min-width: 992px) {
+    .featured-projects-grid {
+        grid-template-columns: repeat(3, minmax(280px, 350px));
     }
 }
