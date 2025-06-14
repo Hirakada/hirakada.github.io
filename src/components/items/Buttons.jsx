@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './buttons.css';
 
 function SocialButton({ icon, href, id }) {
@@ -15,4 +16,22 @@ function SocialButton({ icon, href, id }) {
   );
 }
 
-export default SocialButton;
+function BackButton({ to, label }) {
+  return (
+    <Link to={to} className="back-button">
+      <iconify-icon icon="ic:baseline-keyboard-backspace" width="24" height="24"></iconify-icon>
+      {label}
+    </Link>
+  );
+}
+
+function OpenButton({icon, label, action}) {
+  return (
+    <button className="open-button" onClick={action}>
+      <iconify-icon icon={icon} width="24" height="24"></iconify-icon>
+      {label}
+    </button>
+  )
+}
+
+export { SocialButton, BackButton, OpenButton };

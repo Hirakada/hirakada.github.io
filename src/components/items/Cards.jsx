@@ -1,48 +1,47 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './cards.css';
 
-function FeaturedProject({ id, coverImage, title, collaborators, attributes, projectUrl }) {
+function ProjectCard({ id, coverImage, title, collaborators, attributes, projectUrl, descriptiveTitleSlug }) {
+    const projectSlug = descriptiveTitleSlug;
+
     return (
-        <div 
-          className="featuredProject" 
-          onClick={() => {
-            console.log('URL being opened:', projectUrl);
-            window.open(projectUrl, '_blank');
-          }}
-        >
-            <img src={coverImage} alt={`Cover image for ${title}`} className="cardImage" />
+        <Link to={`/project/${projectSlug}`} className="project-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div className="project">
+                <img src={coverImage} alt={`Cover image for ${title}`} className="cardImage" />
 
-            <h5 className="projectName">{title}</h5>
+                <h5 className="projectName">{title}</h5>
 
-            <div className="cardSection"> 
-                {attributes && attributes.length > 0 && (
-                <ul className="attributesList">
-                    {attributes.map(attribute => (
-                    <li key={attribute.id} className="attributeItem">
-                        {attribute.name}
-                    </li>
-                    ))}
-                </ul>
-                )}
+                <div className="cardSection">
+                    {attributes && attributes.length > 0 && (
+                        <ul className="attributesList">
+                            {attributes.map(attribute => (
+                                <li key={attribute.id} className="attributeItem">
+                                    {attribute.name}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
 
-                {collaborators && collaborators.length > 0 && (
-                    <ul className="collaboratorsList">
-                        {collaborators.map(collaborator => (
-                            <li key={collaborator.id} className="collaboratorItem">
-                                {collaborator.profileImage && (
-                                    <img
-                                        src={collaborator.profileImage}
-                                        alt={`Profile of ${collaborator.name}`}
-                                        className="collaborator-profile-pic"
-                                    />
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                )}        
+                    {collaborators && collaborators.length > 0 && (
+                        <ul className="collaboratorsList">
+                            {collaborators.map(collaborator => (
+                                <li key={collaborator.id} className="collaboratorItem">
+                                    {collaborator.profileImage && (
+                                        <img
+                                            src={collaborator.profileImage}
+                                            alt={`Profile of ${collaborator.name}`}
+                                            className="collaborator-profile-pic"
+                                        />
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
             </div>
-        </div>
+        </Link>
     );
 }
 
-export default FeaturedProject;
+export default ProjectCard;

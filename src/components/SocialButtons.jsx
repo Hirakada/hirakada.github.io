@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialButton from './items/Buttons.jsx'; 
+import { SocialButton } from './items/Buttons.jsx'; 
 import '../styles/home.css';
 
 function SocialButtons() {

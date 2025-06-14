@@ -1,8 +1,6 @@
-.featuredProject {
+.project {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* REMOVED: width: clamp(280px, 90vw, 420px); */
     overflow: hidden;
     background-color: var(--color-surface);
     border: 1px solid rgba(var(--color-on-surface-rgb), 0);
@@ -12,7 +10,11 @@
     box-shadow: var(--shadow-sm);
 }
 
-.featuredProject:hover {
+.projectName {
+    text-align: left;
+}
+
+.project:hover {
     transform: translateY(-5px);
     filter: brightness(1.15);
     border-color: rgba(var(--color-on-surface-rgb), .38);
@@ -27,7 +29,7 @@
     height: 200px;
     object-fit: cover;
     display: block;
-    margin-bottom: 1.5rem; /* Adjusted to 1.5rem for better spacing */
+    margin-bottom: 1.5rem; 
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     margin-left: -1rem;
