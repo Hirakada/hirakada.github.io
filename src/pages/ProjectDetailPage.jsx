@@ -20,33 +20,37 @@ const shuffleArray = (array) => {
 }
 
 function ProjectDetailPage({ projects, globalLoading }) {
-    const { descriptiveTitleSlug } = useParams();
-    const [project, setProject] = useState(null);
-    const [error, setError] = useState(null);
+    let { descriptiveTitleSlug } = useParams();
+    let [ project, setProject ] = useState(null);
+    let [ error, setError ] = useState(null);
 
     useEffect(() => {
         setError(null);
+        setProject(null);
 
         if (!descriptiveTitleSlug) {
             setError("No project slug found in URL.");
-            setProject(null);
             return;
         }
 
-        if (!globalLoading && projects.length > 0) {
-            const foundProject = projects.find(p => p.descriptiveTitleSlug === descriptiveTitleSlug);
-            
-            if (foundProject) {
-                setProject(foundProject);
+        if (!globalLoading && projects) {
+            if (projects.length > 0) {
+                const foundProject = projects.find(p => p.descriptiveTitleSlug === descriptiveTitleSlug);
+
+                if (foundProject) {
+                    setProject(foundProject);
+                } else {
+                    setError("Project not found. It might have been removed or the link is invalid.");
+                }
             } else {
-                setError("Project not found. It might have been removed or the link is invalid.");
-                setProject(null);
+                setError("No project data available. Please visit the main projects page first.");
             }
-        } else if (!globalLoading && projects.length === 0) {
-            setError("No project data available. Please visit the main projects page first.");
-            setProject(null);
         }
     }, [descriptiveTitleSlug, projects, globalLoading]);
+
+    if (globalLoading) {
+        return null;
+    }
 
     if (error) {
         return (
@@ -60,20 +64,16 @@ function ProjectDetailPage({ projects, globalLoading }) {
         );
     }
 
-    if (globalLoading || !project) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-screen p-4">
-                <p>Loading project details...</p>
-            </div>
-        );
+    if (!project) {
+        return null;
     }
 
-    const otherProjects = projects.filter(p => p.id !== project.id);
+    let otherProjects = projects.filter(p => p.id !== project.id);
 
-    const shuffledOtherProjects = shuffleArray([...otherProjects]);
+    let shuffledOtherProjects = shuffleArray([...otherProjects]);
 
     const numberOfRandomProjects = 3;
-    const projectsToDisplay = shuffledOtherProjects.slice(0, numberOfRandomProjects);
+    let projectsToDisplay = shuffledOtherProjects.slice(0, numberOfRandomProjects);
 
     return (
         <> 
@@ -140,7 +140,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
                     )}
                 </div>
             </section>
-            <div className='other-projects'>
+            <section className='other-projects-section'>
                 <h2>Other Projects</h2>
                 {projectsToDisplay.length > 0 ? (
                 <div className="normal-grid">
@@ -160,7 +160,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
                 ) : (
                 <p>No other projects available.</p>
                 )}
-            </div>
+            </section>
         </>
     );
 }

@@ -6,8 +6,8 @@ import AttributeTag from '../components/items/AttributeTag.jsx';
 import '../styles/projectpage.css';
 
 function ProjectPage({ projects, attributes, globalLoading }) {
-    const [allProjectsDisplay, setAllProjectsDisplay] = useState([]);
-    const [allAttributesDisplay, setAllAttributesDisplay] = useState([]);
+    let [allProjectsDisplay, setAllProjectsDisplay] = useState([]);
+    let [allAttributesDisplay, setAllAttributesDisplay] = useState([]);
 
     useEffect(() => {
         if (!globalLoading) {
@@ -35,6 +35,7 @@ function ProjectPage({ projects, attributes, globalLoading }) {
     return (
         <>
             <section className='projects-section'>
+                <h2>My Projects</h2>
                 {allProjectsDisplay.length > 0 ? (
                     <div className="normal-grid">
                         {allProjectsDisplay.map(project => (

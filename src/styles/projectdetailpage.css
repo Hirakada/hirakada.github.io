@@ -9,6 +9,10 @@
     transition: var(--quick-transition);
 }
 
+.project-detail-section:hover {
+    border: 1px solid rgba(var(--color-on-surface-rgb), .4);
+}
+
 .project-detail-section .project-cover-image {
     width: 100%;
     height: clamp(30vh, 60vh, 600px);
@@ -44,13 +48,6 @@
     margin: 1rem 0;
 }
 
-.other-projects {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    min-height: none;
-    height: auto;
-    position: relative;
-    margin: var(--section-padding-y) var(--global-padding-x);
+.other-projects-section {
+    min-height: fit-content;
 }

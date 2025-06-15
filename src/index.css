@@ -112,6 +112,7 @@ h1 {
 h2 {
     font-size: clamp(1.75rem, 4.5vw, 2rem);
     letter-spacing: -0.008333em;
+    margin-bottom: 2rem;
 }
 h3 {
     font-size: clamp(1.5rem, 4vw, 1.75rem);
@@ -174,7 +175,13 @@ input:focus-visible {
 
 .back {
     display: flex;
-    padding: var(--section-padding-y) var(--global-padding-x);
+    margin: calc(var(--section-padding-y)) var(--global-padding-x);
+}
+
+@media (max-width: 767px) {
+    .back {
+        margin: calc(var(--section-padding-y) * 2) var(--global-padding-x) var(--section-padding-y) var(--global-padding-x);
+    }
 }
 
 section {
@@ -341,12 +348,10 @@ p {
 
 .normal-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(280px, 350px));
+    grid-template-columns: repeat(3, minmax(280px, 100%));
     gap: clamp(1.5rem, 3vw, 2.5rem);
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 

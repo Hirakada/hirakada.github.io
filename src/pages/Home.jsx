@@ -9,8 +9,8 @@ import '../styles/home.css';
 function Home({ projects, attributes, globalLoading }) {
     const roleEl = useRef(null);
 
-    const [featuredProjects, setFeaturedProjects] = useState([]);
-    const [homeAttributes, setHomeAttributes] = useState([]);
+    let [featuredProjects, setFeaturedProjects] = useState([]);
+    let [homeAttributes, setHomeAttributes] = useState([]);
 
     useEffect(() => {
         if (!globalLoading && roleEl.current) {
@@ -32,7 +32,7 @@ function Home({ projects, attributes, globalLoading }) {
         if (!globalLoading) {
 
             if (projects && projects.length > 0) {
-                const filteredFeaturedProjects = projects.filter(p => {
+                let filteredFeaturedProjects = projects.filter(p => {
                     return p.isFeatured === true;
                 });
                 setFeaturedProjects(filteredFeaturedProjects);
@@ -43,7 +43,7 @@ function Home({ projects, attributes, globalLoading }) {
             }
 
             if (attributes && attributes.length > 0) {
-                const filteredHomeAttributes = attributes.filter(attr => {
+                let filteredHomeAttributes = attributes.filter(attr => {
                     return attr.type && attr.type !== 'skill';
                 });
                 setHomeAttributes(filteredHomeAttributes);

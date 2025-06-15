@@ -66,13 +66,3 @@
     padding: 1rem;
     box-sizing: border-box;
 }
-
-.featured-projects-section {
-    padding: var(--section-padding-y) var(--global-padding-x);
-    background-color: var(--color-background);
-    text-align: center;
-}
-
-.featured-projects-section h2 {
-    margin-bottom: 2rem;
-}

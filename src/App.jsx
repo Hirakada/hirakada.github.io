@@ -22,9 +22,9 @@ const createSlug = (title) => {
 
 function App() {
     const [globalLoading, setGlobalLoading] = useState(true);
-    const [allProjects, setAllProjects] = useState([]);
-    const [allAttributes, setAllAttributes] = useState([]);
-    const [appError, setAppError] = useState(null);
+    let [allProjects, setAllProjects] = useState([]);
+    let [allAttributes, setAllAttributes] = useState([]);
+    let [appError, setAppError] = useState(null);
 
     useEffect(() => {
         async function fetchAllData() {
@@ -32,8 +32,8 @@ function App() {
             setAppError(null);
 
             try {
-                const cachedProjects = sessionStorage.getItem('allProjectsData');
-                const cachedAttributes = sessionStorage.getItem('allAttributesData');
+                let cachedProjects = sessionStorage.getItem('allProjectsData');
+                let cachedAttributes = sessionStorage.getItem('allAttributesData');
 
                 if (cachedProjects && cachedAttributes) {
                     try {
@@ -51,7 +51,7 @@ function App() {
 
                 console.log("App.jsx: No valid cache found. Fetching all data from Supabase.");
 
-                const { data: projectsData, error: projectsError } = await supabase
+                let { data: projectsData, error: projectsError } = await supabase
                     .from("projects")
                     .select(`
                         *,
@@ -74,7 +74,7 @@ function App() {
                     throw new Error(projectsError.message);
                 }
 
-                const { data: attributesData, error: attributesError } = await supabase
+                let { data: attributesData, error: attributesError } = await supabase
                     .from("attributes")
                     .select("*");
 
@@ -82,14 +82,14 @@ function App() {
                     throw new Error(attributesData.message);
                 }
 
-                const transformedProjects = projectsData.map(project => {
-                    const projectAttributes = project.project_attributes.map(pa => ({
+                let transformedProjects = projectsData.map(project => {
+                    let projectAttributes = project.project_attributes.map(pa => ({
                         id: pa.attributes.id,
                         name: pa.attributes.name,
                         type: pa.attributes.type,
                         iconUrl: pa.attributes.icon_url,
                     }));
-                    const projectCollaborators = project.project_collaborators.map(pc => ({
+                    let projectCollaborators = project.project_collaborators.map(pc => ({
                         id: pc.collaborators.id,
                         name: pc.collaborators.name,
                         profileImage: pc.collaborators.profile_image_url,
@@ -102,7 +102,7 @@ function App() {
                         coverImage = sortedImages[0].image_url;
                     }
 
-                    const descriptiveTitleSlug = createSlug(project.title);
+                    let descriptiveTitleSlug = createSlug(project.title);
 
                     return {
                         id: project.id,
