@@ -6,11 +6,12 @@
   "homepage": "https://hirakada.github.io/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && type nul > dist/.nojekyll",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "commit-and-deploy": "git add . && git commit -m 'Deploying latest changes' && git push && npm run predeploy && npm run deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
