@@ -35,7 +35,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
 
         if (!globalLoading && projects) {
             if (projects.length > 0) {
-                const foundProject = projects.find(p => p.descriptiveTitleSlug === descriptiveTitleSlug);
+                let foundProject = projects.find(p => p.descriptiveTitleSlug === descriptiveTitleSlug);
 
                 if (foundProject) {
                     setProject(foundProject);
