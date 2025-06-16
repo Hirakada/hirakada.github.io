@@ -1,8 +1,8 @@
 
 .project-detail-section {
-    border: 1px solid rgba(var(--color-on-surface-rgb), .1);
+    border: 1.6px solid rgba(var(--color-on-surface-rgb), .1);
     border-radius: 1rem;
-    margin: 0 var(--global-padding-x) var(--global-padding-x);
+    margin: 0 var(--global-padding-x) var(--section-padding-y) var(--global-padding-x);
     width: auto;
     padding: 0;
 
@@ -10,7 +10,7 @@
 }
 
 .project-detail-section:hover {
-    border: 1px solid rgba(var(--color-on-surface-rgb), .4);
+    border-color: rgba(var(--color-on-surface-rgb), .2);
 }
 
 .project-detail-section .project-cover-image {
@@ -23,7 +23,8 @@
 .project-detail-content {
     display: flex;
     flex-direction: column;
-    padding: var(--section-padding-y) var(--global-padding-x);
+    padding: var(--section-padding-y);
+    width: 100%;
 }
 
 .project-description {

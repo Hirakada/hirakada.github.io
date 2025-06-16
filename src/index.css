@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-    --global-padding-x: clamp(1.5rem, 4vw, 4rem);
+    --global-padding-x: clamp(2rem, 10vw, 8rem);
     --header-padding-y: clamp(1rem, 2vh, 2rem);
     --footer-padding-y: clamp(1rem, 2vh, 2rem);
     --section-padding-y: clamp(2rem, 4vh, 6rem);
@@ -22,6 +22,13 @@
     --color-on-background: #E0E0E0;
     --color-on-surface: #E0E0E0;
     --color-on-error: #E0E0E0;
+
+    --color-blue: #004cb0;
+    --color-green: #00b043;
+    --color-yellow: #f9c80e;
+    --color-blue-rgb: 0, 76, 176;
+    --color-green-rgb: 0, 176, 67;
+    --color-yellow-rgb: 249, 200, 14;
 
     --color-primary-rgb: 176, 0, 32;
     --color-primary-variant-rgb: 192, 0, 32;
@@ -71,6 +78,9 @@ html {
     box-sizing: border-box;
     font-size: 14px;
     background-color: var(--color-background);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 *, *::before, *::after {
@@ -98,6 +108,12 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    position: relative;
+}
+
+main {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -112,19 +128,23 @@ h1 {
 h2 {
     font-size: clamp(1.75rem, 4.5vw, 2rem);
     letter-spacing: -0.008333em;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 h3 {
     font-size: clamp(1.5rem, 4vw, 1.75rem);
     letter-spacing: 0em;
+    margin-bottom: .8rem;
 }
 h4 {
     font-size: clamp(1.2rem, 3.5vw, 1.4rem);
     letter-spacing: 0.00735em;
+    margin-bottom: .6rem;
 }
 h5 {
     font-size: clamp(1rem, 3vw, 1.2rem);
     letter-spacing: 0em;
+    margin-bottom: .4rem;
+
 }
 h6 {
     font-size: clamp(0.9rem, 2.5vw, 1rem);
@@ -132,10 +152,20 @@ h6 {
 }
 
 p {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    letter-spacing: 0.03125em;
+    font-size: clamp(0.9rem, 2.3vw, 1rem);
+    letter-spacing: clamp(0.01785em, 0.025vw, 0.03125em);
     color: var(--color-on-background);
     margin-bottom: 1rem;
+}
+
+.section-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    text-align: center;
+    width: calc(100% - 2 * var(--global-padding-x));
+    margin-bottom: 3rem;
 }
 
 a:focus-visible,
@@ -175,21 +205,20 @@ input:focus-visible {
 
 .back {
     display: flex;
-    margin: calc(var(--section-padding-y)) var(--global-padding-x);
+    margin: calc(var(--header-img-height) + (2 * var(--header-padding-y)) + var(--section-padding-y)) var(--global-padding-x) var(--section-padding-y) var(--global-padding-x);
 }
 
-@media (max-width: 767px) {
-    .back {
-        margin: calc(var(--section-padding-y) * 2) var(--global-padding-x) var(--section-padding-y) var(--global-padding-x);
-    }
+.first-section {
+    margin-top: calc(var(--header-img-height) + (2 * var(--header-padding-y)) + var(--section-padding-y));
+    min-height: calc(100vh - (var(--header-img-height) + (2 * var(--header-padding-y)) + var(--section-padding-y)));
 }
 
 section {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
     position: relative;
     padding: var(--section-padding-y) var(--global-padding-x);
 }
@@ -206,17 +235,9 @@ section {
     color: var(--color-on-surface);
 }
 
-p {
-    font-size: clamp(0.8rem, 1.8vw, 0.875rem);
-    letter-spacing: 0.01785em;
-    color: var(--color-on-background);
-    margin-bottom: 1rem;
-}
-
-.text-caption {
-    font-size: 0.75rem;
-    letter-spacing: 0.03333em;
-    color: var(--color-on-secondary);
+.text-description {
+    color: rgba(var(--color-on-background-rgb), .7);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
 .regular-button {
@@ -350,18 +371,28 @@ p {
     display: grid;
     grid-template-columns: repeat(3, minmax(280px, 100%));
     gap: clamp(1.5rem, 3vw, 2.5rem);
-    justify-content: space-between;
+    justify-content: center;
+    align-items: stretch;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-
 @media (max-width: 1023px) {
+    :root {
+        --global-padding-x: clamp(2rem, 8vw, 6rem);
+    }
+
     .normal-grid {
-        grid-template-columns: repeat(2, minmax(280px, 350px));
+        grid-template-columns: repeat(2, minmax(280px, 100%));
     }
 }
 
 @media (max-width: 767px) {
+    :root {
+        --global-padding-x: clamp(2rem, 4vw, 6rem);
+    }
+
     .normal-grid {
         grid-template-columns: repeat(1, 1fr);
     }

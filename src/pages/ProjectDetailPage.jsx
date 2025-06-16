@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-import { AttributeTag, CollaboratorTag } from '../components/items/AttributeTag.jsx';
+import { AttributeTag, CollaboratorTag, BulletTag } from '../components/items/AttributeTag.jsx';
 import { BackButton, OpenButton } from '../components/items/Buttons.jsx'; 
 import ProjectCard from '../components/items/Cards.jsx';
 
@@ -86,14 +86,20 @@ function ProjectDetailPage({ projects, globalLoading }) {
                 
                 <div className="project-detail-content">
                     <h1 className="project-title">{project.title}</h1>
-                    <p className="project-description">{project.description}</p>
+                    <p className="project-description text-description">{project.description}</p>
+                    <BulletTag type={[project.projectStatus]} content={[project.projectStatus]}/>
 
                     {project.attributes && project.attributes.length > 0 && (
                         <div className="project-attributes">
                             <h3>Tools:</h3>
                             <div className="attributes-grid">
                                 {project.attributes.map(attr => (
-                                    <AttributeTag key={attr.id} name={attr.name} iconUrl={attr.iconUrl} />
+                                    <AttributeTag
+                                        key={attr.id}
+                                        iconUrl={attr.iconUrl}
+                                        name={attr.name}
+                                        type={attr.type}
+                                    />
                                 ))}
                             </div>
                         </div>
@@ -142,6 +148,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
             </section>
             <section className='other-projects-section'>
                 <h2>Other Projects</h2>
+                <p className='section-description text-description'>Curious about our diverse capabilities? Take a look at these other projects to see the range of solutions and creativity we bring to the table.</p>
                 {projectsToDisplay.length > 0 ? (
                 <div className="normal-grid">
                     {projectsToDisplay.map(otherProject => (
@@ -153,6 +160,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
                         collaborators={otherProject.collaborators}
                         attributes={otherProject.attributes}
                         projectUrl={otherProject.projectUrl}
+                        status={otherProject.projectStatus}
                         descriptiveTitleSlug={otherProject.descriptiveTitleSlug}
                     />
                     ))}

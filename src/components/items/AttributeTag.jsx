@@ -10,8 +10,6 @@ function AttributeTag({ iconUrl, name, type }) {
   );
 }
 
-export default AttributeTag;
-
 function CollaboratorTag({ imageUrl, name, websiteUrl, linkedinUrl, roleOnProject }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const tagRef = useRef(null);
@@ -72,4 +70,11 @@ function CollaboratorTag({ imageUrl, name, websiteUrl, linkedinUrl, roleOnProjec
   );
 }
 
-export { AttributeTag, CollaboratorTag };
+function BulletTag({type, content}) {
+  return (
+      console.log(type, content),
+      <p className="bulletTag" data-type={type}><span></span>{content}</p>
+  );
+}
+
+export { AttributeTag, CollaboratorTag, BulletTag };

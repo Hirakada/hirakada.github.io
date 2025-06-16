@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Typed from 'typed.js';
 import SocialButtons from '../components/SocialButtons.jsx';
 import ProjectCard from '../components/items/Cards.jsx';
-import AttributeTag from '../components/items/AttributeTag.jsx';
+import { AttributeTag } from '../components/items/AttributeTag.jsx';
 
 import '../styles/home.css';
 
@@ -36,8 +36,6 @@ function Home({ projects, attributes, globalLoading }) {
                     return p.isFeatured === true;
                 });
                 setFeaturedProjects(filteredFeaturedProjects);
-                if (filteredFeaturedProjects.length === 0 && projects.length > 0) {
-                }
             } else {
                 setFeaturedProjects([]);
             }
@@ -47,8 +45,6 @@ function Home({ projects, attributes, globalLoading }) {
                     return attr.type && attr.type !== 'skill';
                 });
                 setHomeAttributes(filteredHomeAttributes);
-                if (filteredHomeAttributes.length === 0 && attributes.length > 0) {
-                }
             } else {
                 setHomeAttributes([]);
             }
@@ -57,9 +53,9 @@ function Home({ projects, attributes, globalLoading }) {
 
     return (
         <>
-            <section className="hero-section">
+            <section className="hero-section first-section">
                 <div className="greeting">
-                    <h3>Hi! I am</h3>
+                    <h2>Hi! I am</h2>
                     <h1 className="role">
                         <span className="auto-type" id="role" ref={roleEl}></span>
                     </h1>
@@ -86,6 +82,7 @@ function Home({ projects, attributes, globalLoading }) {
 
             <section className='featured-projects-section'>
                 <h2>Featured Projects</h2>
+                <p className="section-description text-description">Here's a curated selection of my most impactful and innovative projects, highlighting key skills and creative solutions.</p>
                 {featuredProjects.length > 0 ? (
                     <div className="normal-grid">
                         {featuredProjects.map(project => (
@@ -97,6 +94,7 @@ function Home({ projects, attributes, globalLoading }) {
                                 collaborators={project.collaborators}
                                 attributes={project.attributes}
                                 projectUrl={project.projectUrl}
+                                status={project.projectStatus}
                                 descriptiveTitleSlug={project.descriptiveTitleSlug}
                             />
                         ))}

@@ -18,6 +18,7 @@
     display: inline-block;
     min-width: clamp(min-content, 60vw, max-content);
     max-width: 100%;
+    height: max-content;
     white-space: normal;
     overflow-wrap: break-word;
     word-break: break-word;
@@ -48,7 +49,7 @@
 
 .key-skills-section {
     width: 100%;
-    padding: var(--section-padding-y) var(--global-padding-x);
+    padding: 0 var(--global-padding-x);
     background-color: var(--color-background);
     display: flex;
     justify-content: center;
@@ -63,6 +64,5 @@
     align-items: center;
     gap: clamp(1rem, 2vw, 1.75rem);
     width: 100%;
-    padding: 1rem;
     box-sizing: border-box;
 }

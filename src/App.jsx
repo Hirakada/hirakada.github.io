@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { createClient } from "@supabase/supabase-js";
 import { OrbitProgress } from 'react-loading-indicators';
 
-import Header from './components/header.jsx';
+import Header from './components/Header.jsx';
 import Home from './pages/Home.jsx';
 import ProjectPage from './pages/ProjectsPage.jsx';
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx';
+import DocPage from './pages/Doc.jsx';
 
 import ScrollToTop from './components/Scroll.jsx';
 
@@ -25,6 +26,8 @@ function App() {
     let [allProjects, setAllProjects] = useState([]);
     let [allAttributes, setAllAttributes] = useState([]);
     let [appError, setAppError] = useState(null);
+
+    const firstSectionRef = useRef(null);
 
     useEffect(() => {
         async function fetchAllData() {
@@ -113,6 +116,7 @@ function App() {
                         collaborators: projectCollaborators,
                         projectImages: project.project_images,
                         projectUrl: project.project_url,
+                        projectStatus: project.status,
                         isFeatured: project.is_featured,
                         descriptiveTitleSlug: descriptiveTitleSlug,
                     };
@@ -158,43 +162,53 @@ function App() {
                 </div>
             )}
 
-            <Header />
+            <Header /> 
             <main>
                 <Routes>
-                    <Route
-                        path="/"
+                    <Route 
+                        path="/" 
                         element={
                             <Home
                                 projects={allProjects}
                                 attributes={allAttributes}
                                 globalLoading={globalLoading}
+                                firstSectionRef={firstSectionRef} 
                             />
-                        }
+                        } 
                     />
 
-                    <Route
-                        path="/project"
+                    <Route 
+                        path="/project" 
                         element={
                             <ProjectPage
                                 projects={allProjects}
                                 attributes={allAttributes}
                                 globalLoading={globalLoading}
                             />
-                        }
+                        } 
                     />
 
-                    <Route
-                        path="/project/:descriptiveTitleSlug"
+                    <Route 
+                        path="/project/:descriptiveTitleSlug" 
                         element={
                             <ProjectDetailPage
                                 projects={allProjects}
                                 globalLoading={globalLoading}
                             />
-                        }
+                        } 
                     />
 
                     <Route
-                        path="*"
+                        path="/doc" 
+                        element={
+                            <DocPage
+                                globalLoading={globalLoading}
+                            />
+                        }
+                    />
+
+                    <Route 
+                        path="*" 
                         element={
                             <div
                                 className="
@@ -210,7 +224,7 @@ function App() {
                                     Go to Home
                                 </Link>
                             </div>
-                        }
+                        } 
                     />
                 </Routes>
             </main>

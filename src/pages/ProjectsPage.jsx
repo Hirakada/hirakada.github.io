@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import ProjectCard from '../components/items/Cards.jsx';
-import AttributeTag from '../components/items/AttributeTag.jsx';
 
 import '../styles/projectpage.css';
 
@@ -34,8 +33,10 @@ function ProjectPage({ projects, attributes, globalLoading }) {
 
     return (
         <>
-            <section className='projects-section'>
+            <section className='projects-section first-section'>
                 <h2>My Projects</h2>
+                <p className="section-description text-description">Explore a diverse portfolio of my work, ranging from web development to graphic design, showcasing a blend of creativity and technical skill.</p>
+
                 {allProjectsDisplay.length > 0 ? (
                     <div className="normal-grid">
                         {allProjectsDisplay.map(project => (
@@ -47,6 +48,7 @@ function ProjectPage({ projects, attributes, globalLoading }) {
                                 collaborators={project.collaborators}
                                 attributes={project.attributes}
                                 projectUrl={project.projectUrl}
+                                status={project.projectStatus}
                                 descriptiveTitleSlug={project.descriptiveTitleSlug}
                             />
                         ))}
