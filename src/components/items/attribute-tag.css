@@ -52,6 +52,7 @@
 
 .collaborator-tag.clickable:hover {
     background-color: var(--color-surface-elevated);
+    border: 1px solid rgba(var(--color-on-surface-rgb), 0.3);
 }
 
 .collaborator-avatar {

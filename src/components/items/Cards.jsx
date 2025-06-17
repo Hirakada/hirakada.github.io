@@ -24,7 +24,7 @@ function ProjectCard({ id, coverImage, title, collaborators, attributes, project
                             ))}
 
                             {attributes.length > 3 && (
-                                <li className="attributeItem more-indicator">
+                                <li className="more-indicator">
                                     <span className='more-count'>
                                         +{attributes.length - 3}
                                     </span>

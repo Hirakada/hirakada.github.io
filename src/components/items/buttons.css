@@ -62,6 +62,8 @@
     transition: all var(--quick-transition);
     color: var(--text-high-emphasis);
     gap: .6rem;
+
+    z-index: 2; 
 }
 
 .back-button:hover {

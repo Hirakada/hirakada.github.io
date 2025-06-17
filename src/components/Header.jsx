@@ -67,11 +67,11 @@ function Header() {
                         </li>
                         <li>
                             <Link
-                                to="/contact"
+                                to="/journey"
                                 onClick={handleNavLinkClick}
-                                className={location.pathname === '/contact' ? 'active' : ''}
+                                className={location.pathname === '/journey' ? 'active' : ''}
                             >
-                                Contact
+                                Journey
                             </Link>
                         </li>
                     </ul>

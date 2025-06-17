@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ColorThief from 'colorthief';
 
 import { AttributeTag, CollaboratorTag, BulletTag } from '../components/items/AttributeTag.jsx';
-import { BackButton, OpenButton } from '../components/items/Buttons.jsx'; 
+import { BackButton, OpenButton } from '../components/items/Buttons.jsx';
 import ProjectCard from '../components/items/Cards.jsx';
 
 import '../styles/projectdetailpage.css';
@@ -21,12 +22,14 @@ const shuffleArray = (array) => {
 
 function ProjectDetailPage({ projects, globalLoading }) {
     let { descriptiveTitleSlug } = useParams();
-    let [ project, setProject ] = useState(null);
-    let [ error, setError ] = useState(null);
+    let [project, setProject] = useState(null);
+    let [error, setError] = useState(null);
+    let [dominantColor, setDominantColor] = useState(null);
 
     useEffect(() => {
         setError(null);
-        setProject(null);
+        setProject(null); 
+        setDominantColor(null);
 
         if (!descriptiveTitleSlug) {
             setError("No project slug found in URL.");
@@ -39,6 +42,19 @@ function ProjectDetailPage({ projects, globalLoading }) {
 
                 if (foundProject) {
                     setProject(foundProject);
+                    if (foundProject.coverImage) {
+                        const colorThief = new ColorThief();
+                        const img = new Image();
+
+                        img.addEventListener('load', function() {
+                            const dominantColor = colorThief.getColor(img);
+                            setDominantColor(`rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`);
+;
+                        });
+
+                        img.crossOrigin = 'Anonymous';
+                        img.src = foundProject.coverImage;
+                    }
                 } else {
                     setError("Project not found. It might have been removed or the link is invalid.");
                 }
@@ -69,21 +85,30 @@ function ProjectDetailPage({ projects, globalLoading }) {
     }
 
     let otherProjects = projects.filter(p => p.id !== project.id);
-
     let shuffledOtherProjects = shuffleArray([...otherProjects]);
-
     const numberOfRandomProjects = 3;
     let projectsToDisplay = shuffledOtherProjects.slice(0, numberOfRandomProjects);
 
+    const spotlightStyle = dominantColor ? {
+        backgroundImage: `radial-gradient(
+            circle at center,
+            ${dominantColor} 0%,
+            ${dominantColor} 30%,
+            rgba(${parseInt(dominantColor.slice(4, -1).split(',')[0])}, ${parseInt(dominantColor.slice(4, -1).split(',')[1])}, ${parseInt(dominantColor.slice(4, -1).split(',')[2])}, 0.8) 70%,
+            transparent 100% 
+        )`
+    } : {};
+    
     return (
-        <> 
+        <>  
+            <section className="global-spotlight-background" style={spotlightStyle}></section>
             <span className='back'><BackButton to="/project" label="Back to Projects"></BackButton></span>
-            <section className="project-detail-section">
 
+            <section className="project-detail-section">
                 {project.coverImage && (
                     <img src={project.coverImage} alt={project.title} className="project-cover-image" />
                 )}
-                
+
                 <div className="project-detail-content">
                     <h1 className="project-title">{project.title}</h1>
                     <p className="project-description text-description">{project.description}</p>
@@ -123,20 +148,6 @@ function ProjectDetailPage({ projects, globalLoading }) {
                         </div>
                     )}
 
-                    {project.projectImages && project.projectImages.length > 1 && (
-                        <div className="project-gallery">
-                            <h3>More Images:</h3>
-                            <div className="image-grid">
-                                {project.projectImages
-                                    .filter(image => image.image_url !== project.coverImage)
-                                    .sort((a, b) => a.order - b.order)
-                                    .map(image => (
-                                        <img key={image.id} src={image.image_url} alt={`Project image ${image.id}`} className="project-gallery-image" />
-                                    ))}
-                            </div>
-                        </div>
-                    )}
-
                     {project.projectUrl && (
                         <OpenButton
                             icon="mdi:open-in-new"
@@ -150,23 +161,23 @@ function ProjectDetailPage({ projects, globalLoading }) {
                 <h2>Other Projects</h2>
                 <p className='section-description text-description'>Curious about our diverse capabilities? Take a look at these other projects to see the range of solutions and creativity we bring to the table.</p>
                 {projectsToDisplay.length > 0 ? (
-                <div className="normal-grid">
-                    {projectsToDisplay.map(otherProject => (
-                    <ProjectCard
-                        key={otherProject.id}
-                        id={otherProject.id}
-                        coverImage={otherProject.coverImage}
-                        title={otherProject.title}
-                        collaborators={otherProject.collaborators}
-                        attributes={otherProject.attributes}
-                        projectUrl={otherProject.projectUrl}
-                        status={otherProject.projectStatus}
-                        descriptiveTitleSlug={otherProject.descriptiveTitleSlug}
-                    />
-                    ))}
-                </div>
+                    <div className="normal-grid">
+                        {projectsToDisplay.map(otherProject => (
+                            <ProjectCard
+                                key={otherProject.id}
+                                id={otherProject.id}
+                                coverImage={otherProject.coverImage}
+                                title={otherProject.title}
+                                collaborators={otherProject.collaborators}
+                                attributes={otherProject.attributes}
+                                projectUrl={otherProject.projectUrl}
+                                status={otherProject.projectStatus}
+                                descriptiveTitleSlug={otherProject.descriptiveTitleSlug}
+                            />
+                        ))}
+                    </div>
                 ) : (
-                <p>No other projects available.</p>
+                    <p>No other projects available.</p>
                 )}
             </section>
         </>

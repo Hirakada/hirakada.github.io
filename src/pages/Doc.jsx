@@ -20,6 +20,9 @@ function DocPage({ globalLoading }) {
                 <p className='section-description text-description'>
                     This page provides a comprehensive overview of the website's purpose, its key features, the technologies that power it, and how it contributes to continuous learning and professional growth.
                 </p>
+            </section>
+
+            <section className='web-section'>
 
             </section>
         </>

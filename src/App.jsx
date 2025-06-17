@@ -8,6 +8,7 @@ import Home from './pages/Home.jsx';
 import ProjectPage from './pages/ProjectsPage.jsx';
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx';
 import DocPage from './pages/Doc.jsx';
+import JourneyPage from './pages/JourneyPage.jsx';
 
 import ScrollToTop from './components/Scroll.jsx';
 
@@ -202,6 +203,15 @@ function App() {
                         path="/doc" 
                         element={
                             <DocPage
+                                globalLoading={globalLoading}
+                            />
+                        }
+                    />
+
+                    <Route
+                        path="/journey"
+                        element={
+                            <JourneyPage
                                 globalLoading={globalLoading}
                             />
                         }

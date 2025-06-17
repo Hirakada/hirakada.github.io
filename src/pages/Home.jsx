@@ -41,10 +41,30 @@ function Home({ projects, attributes, globalLoading }) {
             }
 
             if (attributes && attributes.length > 0) {
-                let filteredHomeAttributes = attributes.filter(attr => {
-                    return attr.type && attr.type !== 'skill';
-                });
-                setHomeAttributes(filteredHomeAttributes);
+                const typeOrder = [
+                    'language',
+                    'framework',
+                    'tool',
+                ];
+
+                const sortedAttributes = [...attributes]
+                    .sort((a, b) => {
+                        const indexA = typeOrder.indexOf(a.type);
+                        const indexB = typeOrder.indexOf(b.type);
+
+                        if (indexA === -1 && indexB === -1) {
+                            return a.name.localeCompare(b.name);
+                        }
+                        if (indexA === -1) return 1;
+                        if (indexB === -1) return -1;
+
+                        if (indexA < indexB) return -1;
+                        if (indexA > indexB) return 1;
+
+                        return a.name.localeCompare(b.name);
+                    });
+
+                setHomeAttributes(sortedAttributes);
             } else {
                 setHomeAttributes([]);
             }

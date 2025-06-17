@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
+    "colorthief": "^2.6.0",
     "iconify-icon": "^3.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
