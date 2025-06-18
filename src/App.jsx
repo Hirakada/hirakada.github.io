@@ -24,16 +24,26 @@ const createSlug = (title) => {
 
 function App() {
     const [globalLoading, setGlobalLoading] = useState(true);
-    let [allProjects, setAllProjects] = useState([]);
-    let [allAttributes, setAllAttributes] = useState([]);
-    let [appError, setAppError] = useState(null);
+    const [allProjects, setAllProjects] = useState([]);
+    const [allAttributes, setAllAttributes] = useState([]);
+    const [appError, setAppError] = useState(null);
 
     const firstSectionRef = useRef(null);
 
     useEffect(() => {
-        async function fetchAllData() {
+        if (!globalLoading) {
+            document.body.classList.add('allow-scroll');
+        } else {
+            document.body.classList.remove('allow-scroll');
+        }
+    }, [globalLoading]);
+
+    useEffect(() => {
+        const loadData = async () => {
             setGlobalLoading(true);
             setAppError(null);
+
+            let dataLoadedSuccessfully = false;
 
             try {
                 let cachedProjects = sessionStorage.getItem('allProjectsData');
@@ -41,93 +51,91 @@ function App() {
 
                 if (cachedProjects && cachedAttributes) {
                     try {
-                        console.log("App.jsx: Loading all data from sessionStorage cache.");
                         setAllProjects(JSON.parse(cachedProjects));
                         setAllAttributes(JSON.parse(cachedAttributes));
-                        setGlobalLoading(false);
-                        return;
+                        dataLoadedSuccessfully = true;
                     } catch (parseError) {
-                        console.error("App.jsx: Error parsing cached data:", parseError);
                         sessionStorage.removeItem('allProjectsData');
                         sessionStorage.removeItem('allAttributesData');
                     }
                 }
 
-                console.log("App.jsx: No valid cache found. Fetching all data from Supabase.");
-
-                let { data: projectsData, error: projectsError } = await supabase
-                    .from("projects")
-                    .select(`
-                        *,
-                        project_attributes (
-                            attributes (
-                                id, name, type, icon_url
+                if (!dataLoadedSuccessfully) {
+                    let { data: projectsData, error: projectsError } = await supabase
+                        .from("projects")
+                        .select(`
+                            *,
+                            project_attributes (
+                                attributes (
+                                    id, name, type, icon_url
+                                )
+                            ),
+                            project_contributors (
+                                contributors (
+                                    id, name, profile_image_url, website_url, linkedin_url
+                                )
+                            ),
+                            project_images (
+                                *
                             )
-                        ),
-                        project_collaborators (
-                            collaborators (
-                                id, name, profile_image_url, website_url, linkedin_url
-                            )
-                        ),
-                        project_images (
-                            *
-                        )
-                    `); 
-                    
-                if (projectsError) {
-                    throw new Error(projectsError.message);
-                }
-
-                let { data: attributesData, error: attributesError } = await supabase
-                    .from("attributes")
-                    .select("*");
-
-                if (attributesError) {
-                    throw new Error(attributesData.message);
-                }
-
-                let transformedProjects = projectsData.map(project => {
-                    let projectAttributes = project.project_attributes.map(pa => ({
-                        id: pa.attributes.id,
-                        name: pa.attributes.name,
-                        type: pa.attributes.type,
-                        iconUrl: pa.attributes.icon_url,
-                    }));
-                    let projectCollaborators = project.project_collaborators.map(pc => ({
-                        id: pc.collaborators.id,
-                        name: pc.collaborators.name,
-                        profileImage: pc.collaborators.profile_image_url,
-                        websiteUrl: pc.collaborators.website_url,
-                        linkedinUrl: pc.collaborators.linkedin_url,
-                    }));
-                    let coverImage = null;
-                    if (project.project_images && project.project_images.length > 0) {
-                        const sortedImages = [...project.project_images].sort((a, b) => a.order - b.order);
-                        coverImage = sortedImages[0].image_url;
+                        `); 
+                        
+                    if (projectsError) {
+                        throw new Error(projectsError.message);
                     }
 
-                    let descriptiveTitleSlug = createSlug(project.title);
+                    let { data: attributesData, error: attributesError } = await supabase
+                        .from("attributes")
+                        .select("*");
 
-                    return {
-                        id: project.id,
-                        title: project.title,
-                        description: project.long_description,
-                        coverImage: coverImage,
-                        attributes: projectAttributes,
-                        collaborators: projectCollaborators,
-                        projectImages: project.project_images,
-                        projectUrl: project.project_url,
-                        projectStatus: project.status,
-                        isFeatured: project.is_featured,
-                        descriptiveTitleSlug: descriptiveTitleSlug,
-                    };
-                });
+                    if (attributesError) {
+                        throw new Error(attributesData.message);
+                    }
 
-                setAllProjects(transformedProjects);
-                setAllAttributes(attributesData);
+                    let transformedProjects = projectsData.map(project => {
+                        let projectAttributes = project.project_attributes.map(pa => ({
+                            id: pa.attributes.id,
+                            name: pa.attributes.name,
+                            type: pa.attributes.type,
+                            iconUrl: pa.attributes.icon_url,
+                        }));
+                        let projectContributors = project.project_contributors.map(pc => ({
+                            id: pc.contributors.id,
+                            name: pc.contributors.name,
+                            profileImage: pc.contributors.profile_image_url,
+                            websiteUrl: pc.contributors.website_url,
+                            linkedinUrl: pc.contributors.linkedin_url,
+                        }));
+                        let coverImage = null;
+                        if (project.project_images && project.project_images.length > 0) {
+                            const sortedImages = [...project.project_images].sort((a, b) => a.order - b.order);
+                            coverImage = sortedImages[0].image_url;
+                        }
 
-                sessionStorage.setItem('allProjectsData', JSON.stringify(transformedProjects));
-                sessionStorage.setItem('allAttributesData', JSON.stringify(attributesData));
+                        let descriptiveTitleSlug = createSlug(project.title);
+
+                        return {
+                            id: project.id,
+                            title: project.title,
+                            description: project.long_description,
+                            coverImage: coverImage,
+                            attributes: projectAttributes,
+                            contributors: projectContributors,
+                            projectImages: project.project_images,
+                            projectUrl: project.project_url,
+                            projectStatus: project.status,
+                            isFeatured: project.is_featured,
+                            descriptiveTitleSlug: descriptiveTitleSlug,
+                        };
+                    });
+
+                    setAllProjects(transformedProjects);
+                    setAllAttributes(attributesData);
+
+                    sessionStorage.setItem('allProjectsData', JSON.stringify(transformedProjects));
+                    sessionStorage.setItem('allAttributesData', JSON.stringify(attributesData));
+                    dataLoadedSuccessfully = true;
+                }
 
             } catch (err) {
                 setAppError(err.message || "Failed to load application data.");
@@ -136,11 +144,13 @@ function App() {
                 sessionStorage.removeItem('allProjectsData');
                 sessionStorage.removeItem('allAttributesData');
             } finally {
-                setGlobalLoading(false);
+                setTimeout(() => {
+                    setGlobalLoading(false);
+                }, 500);
             }
-        }
+        };
 
-        fetchAllData();
+        loadData();
     }, []);
 
     if (appError) {
@@ -158,7 +168,7 @@ function App() {
             <ScrollToTop /> 
 
             {globalLoading && (
-                <div className="flex items-center justify-center w-screen h-screen fixed top-0 left-0 bg-black z-50 pointer-events-none">
+                <div className="flex items-center justify-center w-full fixed top-0 left-0 bg-black z-50 pointer-events-none">
                     <OrbitProgress color="#E0E0E0" size="medium" text="" textColor="" />
                 </div>
             )}
@@ -222,9 +232,9 @@ function App() {
                         element={
                             <div
                                 className="
-                                        flex flex-col items-center justify-center
-                                        text-gray-700 bg-gray-50 p-4
-                                    "
+                                    flex flex-col items-center justify-center
+                                    text-gray-700 bg-gray-50 p-4
+                                "
                                 style={{ minHeight: 'calc(100vh - 64px)' }}
                             >
                                 <h1 className="text-6xl font-extrabold text-red-600">404</h1>

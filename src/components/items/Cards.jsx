@@ -4,7 +4,7 @@ import { BulletTag } from '../items/AttributeTag.jsx';
 
 import './cards.css';
 
-function ProjectCard({ id, coverImage, title, collaborators, attributes, projectUrl, descriptiveTitleSlug, status }) {
+function ProjectCard({ id, coverImage, title, contributors, attributes, projectUrl, descriptiveTitleSlug, status }) {
     const projectSlug = descriptiveTitleSlug;
 
     return (
@@ -33,24 +33,24 @@ function ProjectCard({ id, coverImage, title, collaborators, attributes, project
                         </ul>
                     )}
 
-                    {collaborators && collaborators.length > 0 && (
-                        <ul className={`collaboratorsList ${collaborators.length > 3 ? 'enabled-info' : ''}`}>
-                            {collaborators.slice(0, 3).map(collaborator => (
-                                <li key={collaborator.id} className="collaboratorItem">
-                                    {collaborator.profileImage && (
+                    {contributors && contributors.length > 0 && (
+                        <ul className={`contributorsList ${contributors.length > 3 ? 'enabled-info' : ''}`}>
+                            {contributors.slice(0, 3).map(contributor => (
+                                <li key={contributor.id} className="contributorItem">
+                                    {contributor.profileImage && (
                                         <img
-                                            src={collaborator.profileImage}
-                                            alt={`Profile of ${collaborator.name}`}
-                                            className="collaborator-profile-pic"
+                                            src={contributor.profileImage}
+                                            alt={`Profile of ${contributor.name}`}
+                                            className="contributor-profile-pic"
                                         />
                                     )}
                                 </li>
                             ))}
 
-                            {collaborators.length > 3 && (
-                                <li className="collaboratorItem more-indicator">
+                            {contributors.length > 3 && (
+                                <li className="contributorItem more-indicator">
                                     <span className='more-count'>
-                                        +{collaborators.length - 3}
+                                        +{contributors.length - 3}
                                     </span>
                                 </li>
                             )}

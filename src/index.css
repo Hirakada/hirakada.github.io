@@ -9,42 +9,44 @@
     --footer-padding-y: clamp(1rem, 2vh, 2rem);
     --section-padding-y: clamp(2rem, 4vh, 6rem);
 
-    --color-primary: #B00020;
-    --color-primary-variant: #C00020;
-    --color-secondary: #D50101;
+    --color-primary: #D3D3D3;
+    --color-primary-variant: #B3B3B3;
+    --color-secondary: #919191;
     --color-background: #101010;
     --color-surface: #121212;
     --color-surface-elevated: #151515;
-    --color-error: #DC0D0D;
+    --color-error: #B00020;
 
-    --color-on-primary: #E0E0E0;
-    --color-on-secondary: #E0E0E0;
+    --color-on-primary: #121212;
+    --color-on-secondary: #121212;
     --color-on-background: #E0E0E0;
     --color-on-surface: #E0E0E0;
     --color-on-error: #E0E0E0;
 
+    --color-red: var(--color-error);
     --color-blue: #004cb0;
     --color-green: #00b043;
     --color-yellow: #f9c80e;
+    --color-red-rggb: 176, 0, 32;
     --color-blue-rgb: 0, 76, 176;
     --color-green-rgb: 0, 176, 67;
     --color-yellow-rgb: 249, 200, 14;
 
-    --color-primary-rgb: 176, 0, 32;
-    --color-primary-variant-rgb: 192, 0, 32;
-    --color-secondary-rgb: 213, 1, 1;
+    --color-primary-rgb: 211, 211, 211;
+    --color-primary-variant-rgb: 179, 179, 179;
+    --color-secondary-rgb: 145, 145, 145;
     --color-background-rgb: 16, 16, 16;
     --color-surface-rgb: 18, 18, 18;
     --color-surface-elevated-rgb: 21, 21, 21;
-    --color-error-rgb: 220, 13, 13;
+    --color-error-rgb: 176, 0, 32;
 
-    --color-on-primary-rgb: 224, 224, 224;
-    --color-on-secondary-rgb: 224, 224, 224;
+    --color-on-primary-rgb: 16, 16, 16;
+    --color-on-secondary-rgb: 16, 16, 16;
     --color-on-background-rgb: 224, 224, 224;
     --color-on-surface-rgb: 224, 224, 224;
     --color-on-error-rgb: 224, 224, 224;
     
-    --text-high-emphasis: var(--color-on-primary);
+    --text-high-emphasis: var(--color-on-background);
     --text-medium-emphasis: rgba(var(--color-on-background-rgb), 0.70);
     --text-disabled: rgba(var(--color-on-background-rgb), 0.50);
     
@@ -109,11 +111,13 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     position: relative;
+    overflow-y: hidden;
 }
 
 main {
     width: 100%;
     box-sizing: border-box;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -164,7 +168,7 @@ p {
     justify-content: center;
     flex-wrap: nowrap;
     text-align: center;
-    width: calc(100% - 2 * var(--global-padding-x));
+    width: calc(100% - 4 * var(--global-padding-x));
     margin-bottom: 3rem;
 }
 
@@ -222,6 +226,8 @@ section {
     width: 100%;
     position: relative;
     padding: var(--section-padding-y) var(--global-padding-x);
+
+    animation: none;
 }
 
 .text-high-emphasis {
@@ -237,7 +243,7 @@ section {
 }
 
 .text-description {
-    color: rgba(var(--color-on-background-rgb), .7);
+    color: var(--text-medium-emphasis);
     font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 

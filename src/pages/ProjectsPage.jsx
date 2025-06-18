@@ -45,7 +45,7 @@ function ProjectPage({ projects, attributes, globalLoading }) {
                                 id={project.id}
                                 coverImage={project.coverImage}
                                 title={project.title}
-                                collaborators={project.collaborators}
+                                contributors={project.contributors}
                                 attributes={project.attributes}
                                 projectUrl={project.projectUrl}
                                 status={project.projectStatus}

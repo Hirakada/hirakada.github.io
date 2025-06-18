@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ColorThief from 'colorthief';
 
-import { AttributeTag, CollaboratorTag, BulletTag } from '../components/items/AttributeTag.jsx';
+import { AttributeTag, ContributorTag, BulletTag } from '../components/items/AttributeTag.jsx';
 import { BackButton, OpenButton } from '../components/items/Buttons.jsx';
 import ProjectCard from '../components/items/Cards.jsx';
 
@@ -130,18 +130,18 @@ function ProjectDetailPage({ projects, globalLoading }) {
                         </div>
                     )}
 
-                    {project.collaborators && project.collaborators.length > 0 && (
-                        <div className="project-collaborators">
-                            <h3>Collaborators:</h3>
-                            <div className="collaborators-list">
-                                {project.collaborators.map(collaborator => (
-                                    <CollaboratorTag
-                                        key={collaborator.id}
-                                        name={collaborator.name}
-                                        imageUrl={collaborator.profileImage}
-                                        websiteUrl={collaborator.websiteUrl}
-                                        linkedinUrl={collaborator.linkedinUrl}
-                                        roleOnProject={collaborator.roleOnProject}
+                    {project.contributors && project.contributors.length > 0 && (
+                        <div className="project-contributors">
+                            <h3>Contributors:</h3>
+                            <div className="contributors-list">
+                                {project.contributors.map(contributor => (
+                                    <ContributorTag
+                                        key={contributor.id}
+                                        name={contributor.name}
+                                        imageUrl={contributor.profileImage}
+                                        websiteUrl={contributor.websiteUrl}
+                                        linkedinUrl={contributor.linkedinUrl}
+                                        roleOnProject={contributor.roleOnProject}
                                     />
                                 ))}
                             </div>
@@ -168,7 +168,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
                                 id={otherProject.id}
                                 coverImage={otherProject.coverImage}
                                 title={otherProject.title}
-                                collaborators={otherProject.collaborators}
+                                contributors={otherProject.contributors}
                                 attributes={otherProject.attributes}
                                 projectUrl={otherProject.projectUrl}
                                 status={otherProject.projectStatus}

@@ -18,7 +18,7 @@ header {
     background-color: rgba(var(--color-background-rgb), 0.85);
     backdrop-filter: blur(1rem);
     -webkit-backdrop-filter: blur(1rem);
-    border-bottom: 1.6px solid rgba(var(--color-on-surface-rgb), .1);
+    border-bottom: 1.6px solid rgba(var(--color-secondary-rgb), .1);
 }
 
 header,
@@ -65,7 +65,7 @@ header nav ul {
 }
 
 header nav ul li a {
-    color: var(--text-high-emphasis);
+    color: var(--text-disabled);
     text-decoration: none;
     padding: 0.5rem 0.8rem;
     border-radius: 0.375rem;
@@ -73,12 +73,12 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: var(--color-primary);
+    color: var(--text-high-emphasis);
     background-color: rgba(var(--color-primary-variant-rgb), 0.1);
 }
 
 header nav ul li a.active {
-    color: var(--color-primary);
+    color: var(--text-high-emphasis);
     background-color: rgba(var(--color-primary-variant-rgb), 0.1);
     box-shadow: inset 0 0 0 1px rgba(var(--color-primary-variant-rgb), 0.2);
 }
@@ -86,7 +86,7 @@ header nav ul li a.active {
 .menuToggleBtn {
     display: none;
     cursor: pointer;
-    color: var(--color-on-background);
+    color: var(--text-high-emphasis);
     font-size: 1.5rem;
 }
 
