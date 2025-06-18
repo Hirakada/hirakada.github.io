@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ColorThief from 'colorthief';
 
@@ -20,16 +20,81 @@ const shuffleArray = (array) => {
     return array;
 }
 
+function rgbToHsl(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    let max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+        h = s = 0;
+    } else {
+        let d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r:
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+            case g:
+                h = (b - r) / d + 2;
+                break;
+            case b:
+                h = (r - g) / d + 4;
+                break;
+        }
+        h /= 6;
+    }
+
+    return [h * 360, s * 100, l * 100];
+}
+
+function hslToRgb(h, s, l) {
+    h /= 360;
+    s /= 100;
+    l /= 100;
+
+    let r, g, b;
+
+    if (s === 0) {
+        r = g = b = l;
+    } else {
+        const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+        };
+
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+
 function ProjectDetailPage({ projects, globalLoading }) {
     let { descriptiveTitleSlug } = useParams();
     let [project, setProject] = useState(null);
     let [error, setError] = useState(null);
     let [dominantColor, setDominantColor] = useState(null);
+    const spotlightRef = useRef(null); 
+    const [spotlightShouldBeVisible, setSpotlightShouldBeVisible] = useState(false);
 
     useEffect(() => {
         setError(null);
         setProject(null); 
         setDominantColor(null);
+        setSpotlightShouldBeVisible(false);
 
         if (!descriptiveTitleSlug) {
             setError("No project slug found in URL.");
@@ -47,22 +112,47 @@ function ProjectDetailPage({ projects, globalLoading }) {
                         const img = new Image();
 
                         img.addEventListener('load', function() {
-                            const dominantColor = colorThief.getColor(img);
-                            setDominantColor(`rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`);
-;
+                            const dominantColorRGB = colorThief.getColor(img); 
+
+                            let [h, s, l] = rgbToHsl(dominantColorRGB[0], dominantColorRGB[1], dominantColorRGB[2]);
+                            const lightnessIncrease = 15; 
+                            l = Math.min(100, l + lightnessIncrease);
+
+                            const boostedColorRGB = hslToRgb(h, s, l);
+
+                            setDominantColor(`rgb(${boostedColorRGB[0]}, ${boostedColorRGB[1]}, ${boostedColorRGB[2]})`);
+                            
+                            setSpotlightShouldBeVisible(true); 
                         });
 
                         img.crossOrigin = 'Anonymous';
                         img.src = foundProject.coverImage;
+                    } else {
+                        setSpotlightShouldBeVisible(false);
                     }
                 } else {
                     setError("Project not found. It might have been removed or the link is invalid.");
+                    setSpotlightShouldBeVisible(false);
                 }
             } else {
                 setError("No project data available. Please visit the main projects page first.");
+                setSpotlightShouldBeVisible(false);
             }
         }
     }, [descriptiveTitleSlug, projects, globalLoading]);
+
+    useEffect(() => {
+        if (spotlightRef.current) {
+            if (spotlightShouldBeVisible) {
+                spotlightRef.current.classList.remove('fade-in-animation');
+                void spotlightRef.current.offsetWidth; 
+                spotlightRef.current.classList.add('fade-in-animation');
+            } else {
+                spotlightRef.current.classList.remove('fade-in-animation');
+            }
+        }
+    }, [spotlightShouldBeVisible]);
+
 
     if (globalLoading) {
         return null;
@@ -90,18 +180,21 @@ function ProjectDetailPage({ projects, globalLoading }) {
     let projectsToDisplay = shuffledOtherProjects.slice(0, numberOfRandomProjects);
 
     const spotlightStyle = dominantColor ? {
-        backgroundImage: `radial-gradient(
-            circle at center,
+        backgroundImage: `linear-gradient(
             ${dominantColor} 0%,
-            ${dominantColor} 30%,
-            rgba(${parseInt(dominantColor.slice(4, -1).split(',')[0])}, ${parseInt(dominantColor.slice(4, -1).split(',')[1])}, ${parseInt(dominantColor.slice(4, -1).split(',')[2])}, 0.8) 70%,
-            transparent 100% 
+            rgba(${parseInt(dominantColor.slice(4, -1).split(',')[0])}, ${parseInt(dominantColor.slice(4, -1).split(',')[1])}, ${parseInt(dominantColor.slice(4, -1).split(',')[2])}, 0.5) 20%,
+            rgba(${parseInt(dominantColor.slice(4, -1).split(',')[0])}, ${parseInt(dominantColor.slice(4, -1).split(',')[1])}, ${parseInt(dominantColor.slice(4, -1).split(',')[2])}, 0.2) 40%, 
+            transparent 100%
         )`
     } : {};
     
     return (
         <>  
-            <section className="global-spotlight-background" style={spotlightStyle}></section>
+            <section 
+                ref={spotlightRef} 
+                className="global-spotlight-background" 
+                style={spotlightStyle}
+            ></section>
             <span className='back'><BackButton to="/project" label="Back to Projects"></BackButton></span>
 
             <section className="project-detail-section">
