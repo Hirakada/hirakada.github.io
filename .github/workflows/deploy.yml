@@ -1,0 +1,36 @@
+name: Deploy Vite React App to GitHub Pages (hirakada.github.io)
+
+on:
+  push:
+    branches:
+      - main # This workflow will trigger when you push to the 'main' branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Or your specific Node.js version, e.g., '18', '22'
+          cache: 'npm' # Cache npm dependencies for faster builds
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build # This executes your vite build, generating 'dist' and the sitemap
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 # Using v3 is fine, v4 is newer if you want
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # IMPORTANT: For user/organization pages, publish directly to the 'main' branch
+          # of the 'yourusername.github.io' repository.
+          publish_branch: main
+          # This ensures no Jekyll processing, essential for Vite/React SPAs
+          enable_jekyll: false
