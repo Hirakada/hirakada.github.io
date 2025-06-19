@@ -11,7 +11,7 @@
 }
 
 .project-detail-section:hover {
-    border-color: rgba(var(--color-secondary-rgb), .2);
+    border-color: rgba(var(--color-sec0ondary-rgb), .2);
 }
 
 .project-detail-section .project-cover-image {

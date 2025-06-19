@@ -10,7 +10,7 @@ function ProjectCard({ id, coverImage, title, contributors, attributes, projectU
     return (
         <Link to={`/project/${projectSlug}`} className="project-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="project">
-                <img src={coverImage} alt={`Cover image for ${title}`} className="cardImage" />
+                <img loading="lazy" src={coverImage} alt={`Cover image for ${title}`} className="cardImage" />
                 <BulletTag type={status} content={status}></BulletTag>
                 <h5 className="projectName">{title}</h5>
 
