@@ -78,7 +78,7 @@ function App() {
                             project_images (
                                 *
                             )
-                        `); 
+                        `);
                         
                     if (projectsError) {
                         throw new Error(projectsError.message);
@@ -114,6 +114,16 @@ function App() {
 
                         let descriptiveTitleSlug = createSlug(project.title);
 
+                        let cardLinkHref;
+                        const githubPagesBase = "https://hirakada.github.io/";
+
+                        if (project.project_url && project.project_url.startsWith(githubPagesBase)) {
+                            const ghRepoName = project.project_url.substring(githubPagesBase.length).split('/')[0];
+                            cardLinkHref = `/${ghRepoName}`;
+                        } else {
+                            cardLinkHref = `/project/${descriptiveTitleSlug}`;
+                        }
+
                         return {
                             id: project.id,
                             title: project.title,
@@ -126,6 +136,7 @@ function App() {
                             projectStatus: project.status,
                             isFeatured: project.is_featured,
                             descriptiveTitleSlug: descriptiveTitleSlug,
+                            cardLinkHref: cardLinkHref
                         };
                     });
 

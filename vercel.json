@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/project-cgroovy/(.*)",
+      "destination": "https://hirakada.github.io/project-cgroovy/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
