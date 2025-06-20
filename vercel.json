@@ -1,12 +1,14 @@
 {
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/project-cgroovy/(.*)",
-      "destination": "https://hirakada.github.io/project-cgroovy/$1"
+      "source": "/project",
+      "destination": "https://project.hirakada.com",
+      "permanent": true
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/project/:path*",
+      "destination": "https://project.hirakada.com/:path*",
+      "permanent": true
     }
   ]
 }
