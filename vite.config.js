@@ -61,7 +61,7 @@ export default defineConfig(async ({ mode }) => {
     plugins: [
       react(),
       Sitemap({
-        hostname: 'https://hirakada.github.io/',
+        hostname: 'https://hirakada.com/',
         dynamicRoutes: allDynamicRoutes,
         generateRobotsTxt: true,
       }),
