@@ -4,16 +4,11 @@ import { BulletTag } from '../items/AttributeTag.jsx';
 
 import './cards.css';
 
-function ProjectCard({ id, coverImage, title, contributors, attributes, projectUrl, descriptiveTitleSlug, status, cardLinkHref }) {
-    const isInternalReactRoute = cardLinkHref && cardLinkHref.startsWith('/project/');
-
-    const WrapperComponent = isInternalReactRoute ? Link : 'a';
-    const linkProps = isInternalReactRoute
-        ? { to: cardLinkHref }
-        : { href: cardLinkHref, target: '_blank', rel: 'noopener noreferrer' };
+function ProjectCard({ id, coverImage, title, contributors, attributes, projectUrl, descriptiveTitleSlug, status }) {
+    const projectSlug = descriptiveTitleSlug;
 
     return (
-        <WrapperComponent {...linkProps} className="project-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={`/project/${projectSlug}`} className="project-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="project">
                 <img loading="lazy" src={coverImage} alt={`Cover image for ${title}`} className="cardImage" />
                 <BulletTag type={status} content={status}></BulletTag>
@@ -27,6 +22,7 @@ function ProjectCard({ id, coverImage, title, contributors, attributes, projectU
                                     {attribute.name}
                                 </li>
                             ))}
+
                             {attributes.length > 3 && (
                                 <li className="more-indicator">
                                     <span className='more-count'>
@@ -50,6 +46,7 @@ function ProjectCard({ id, coverImage, title, contributors, attributes, projectU
                                     )}
                                 </li>
                             ))}
+
                             {contributors.length > 3 && (
                                 <li className="contributorItem more-indicator">
                                     <span className='more-count'>
@@ -61,7 +58,7 @@ function ProjectCard({ id, coverImage, title, contributors, attributes, projectU
                     )}
                 </div>
             </div>
-        </WrapperComponent>
+        </Link>
     );
 }
 
