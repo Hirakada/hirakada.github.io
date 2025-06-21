@@ -1,7 +1,6 @@
 {
   "name": "@hirakada/ui",
   "version": "1.0.0",
-  "main": "dist/index.cjs",
   "module": "dist/index.es.js",
   "type": "module",
   "files": ["dist"],
@@ -22,7 +21,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs"
+      "default": "./dist/index.es.js" 
     },
     "./ui.css": "./dist/ui.css"
   }
