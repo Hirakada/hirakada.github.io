@@ -26,9 +26,6 @@ export default defineConfig(async ({ mode }) => {
     build: {
       outDir: 'dist',
       emptyOutDir: true,
-      rollupOptions: {
-        external: ['react-router-dom'],
-      },
     },
     optimizeDeps: {
     }
