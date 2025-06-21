@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
-import { createClient } from "@supabase/supabase-js/dist/main/index.js";
 
 export default defineConfig(async ({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
@@ -21,7 +20,8 @@ export default defineConfig(async ({ mode }) => {
 
   if (supabaseUrl && supabaseAnonKey) {
     try {
-      supabaseForSitemap = createClient(supabaseUrl, supabaseAnonKey);
+      const { createClient: dynamicCreateClient } = await import("@supabase/supabase-js");
+      supabaseForSitemap = dynamicCreateClient(supabaseUrl, supabaseAnonKey);
 
       if (supabaseForSitemap && typeof supabaseForSitemap.from === 'function') {
         const { data: projectsData, error: projectsError } = await supabaseForSitemap
