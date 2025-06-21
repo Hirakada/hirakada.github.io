@@ -1,8 +1,7 @@
-// D:\Portfolio\hirakada.github.io\apps\landingpage\vite.config.js
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js/dist/main/index.js";
 
 export default defineConfig(async ({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
@@ -20,8 +19,7 @@ export default defineConfig(async ({ mode }) => {
   let projectSlugs = [];
   let supabaseForSitemap = null;
 
-  if (!supabaseUrl || !supabaseAnonKey) {
-  } else {
+  if (supabaseUrl && supabaseAnonKey) {
     try {
       supabaseForSitemap = createClient(supabaseUrl, supabaseAnonKey);
 
@@ -31,6 +29,7 @@ export default defineConfig(async ({ mode }) => {
           .select('title');
 
         if (projectsError) {
+          console.error("Error fetching projects for sitemap:", projectsError);
         } else if (projectsData) {
           const createSlug = (title) => {
             return title
@@ -42,9 +41,13 @@ export default defineConfig(async ({ mode }) => {
           projectSlugs = projectsData.map(project => `/project/${createSlug(project.title)}`);
         }
       } else {
+        console.warn("Supabase client not initialized or 'from' method missing for sitemap generation.");
       }
     } catch (e) {
+      console.error("Failed to initialize Supabase or fetch data for sitemap:", e);
     }
+  } else {
+    console.warn("Supabase URL or ANON Key not provided. Dynamic sitemap routes will not be generated.");
   }
 
   const allDynamicRoutes = [...staticRoutes, ...projectSlugs];
@@ -62,9 +65,8 @@ export default defineConfig(async ({ mode }) => {
     build: {
       outDir: 'dist',
       emptyOutDir: true,
-      rollupOptions: { 
+      rollupOptions: {
         external: ['react-router-dom'],
-
       },
     },
     optimizeDeps: {
