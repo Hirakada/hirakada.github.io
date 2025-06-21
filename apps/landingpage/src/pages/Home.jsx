@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Typed from 'typed.js';
 
-import { ProjectCard, AttributeTag } from "@hirakada/ui";
+import { SocialButton, ProjectCard, AttributeTag } from "@hirakada/ui";
 
 import '../styles/home.css';
 
