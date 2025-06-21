@@ -1,29 +1,37 @@
 {
-  "name": "@hirakada/ui",
-  "version": "1.0.0",
-  "module": "dist/index.es.js",
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "files": ["dist"],
   "scripts": {
-    "build": "vite build"
+    "dev": "vite",
+    "build": "pnpm --filter=@hirakada/ui build && vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
+  "dependencies": {
+    "@hirakada/ui": "workspace:^1.0.0",
+    "colorthief": "^2.6.0",
+    "iconify-icon": "^3.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-loading-indicators": "^1.0.1",
     "react-router-dom": "^6.30.1"
   },
   "devDependencies": {
-    "vite": "^6.0.0",
-    "@vitejs/plugin-react": "^4.0.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.cjs",
-      "default": "./dist/index.es.js"
-    },
-    "./ui.css": "./dist/ui.css"
+    "@eslint/js": "^9.29.0",
+    "@supabase/supabase-js": "^2.50.0",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.29.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.2.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "vite": "^6.3.5"
   }
 }
