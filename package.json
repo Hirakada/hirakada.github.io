@@ -1,31 +1,27 @@
 {
-  "name": "hirakada.com",
-  "version": "1.0.0",
-  "description": "Monorepo for Hirakada's personal website and digital portfolio.",
+  "name": "hirakada.github.io",
   "private": true,
-  "scripts": {
-    "dev:landingpage": "pnpm --filter landingpage dev",
-    "build:landingpage": "pnpm --filter landingpage build",
-    "start:landingpage": "pnpm --filter landingpage preview",
-    "lint:landingpage": "pnpm --filter landingpage lint",
-
-    "dev:portfolio": "pnpm --filter portfolio dev",
-    "build:portfolio": "pnpm --filter portfolio build",
-    "start:portfolio": "pnpm --filter portfolio preview",
-    "lint:portfolio": "pnpm --filter portfolio lint",
-
-    "build:ui": "pnpm --filter @hirakada/ui build",
-    "lint:ui": "pnpm --filter @hirakada/ui lint",
-
-    "install:all": "pnpm install",
-    "build:all": "pnpm build:ui && pnpm build:landingpage && pnpm build:portfolio",
-    "lint:all": "pnpm --filter '*' lint"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "version": "1.0.0",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build:landingpage": "pnpm --filter=@hirakada/ui build && build && pnpm --filter=landingpage build",
+    "build:portfolio": "pnpm --filter=@hirakada/ui build && build && pnpm --filter=portfolio build",
+    "dev:landingpage": "pnpm --filter=landingpage dev",
+    "dev:portfolio": "pnpm --filter=portfolio dev",
+    "build": "echo 'Please use a specific build script: pnpm build:landingpage or pnpm build:portfolio'",
+    "dev": "echo 'Please use a specific dev script: pnpm dev:landingpage or pnpm dev:portfolio'",
+    "install:all": "pnpm install"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^9.25.0",
+    "tailwindcss": "^4.1.10",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.5",
+    "typescript": "^5.x.x"
+  }
 }
