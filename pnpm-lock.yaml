@@ -35,6 +35,9 @@ importers:
       '@eslint/js':
         specifier: ^9.25.0
         version: 9.29.0
+      '@supabase/supabase-js':
+        specifier: ^2.50.0
+        version: 2.50.0
       '@tailwindcss/postcss':
         specifier: ^4.1.10
         version: 4.1.10
@@ -80,9 +83,6 @@ importers:
       '@hirakada/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@supabase/supabase-js':
-        specifier: ^2.50.0
-        version: 2.50.0
       colorthief:
         specifier: ^2.6.0
         version: 2.6.0
@@ -105,6 +105,9 @@ importers:
       '@eslint/js':
         specifier: ^9.25.0
         version: 9.29.0
+      '@supabase/supabase-js':
+        specifier: ^2.50.0
+        version: 2.50.0
       '@tailwindcss/postcss':
         specifier: ^4.1.10
         version: 4.1.10
