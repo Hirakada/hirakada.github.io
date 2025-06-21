@@ -9,9 +9,9 @@
   "scripts": {
     "build:landingpage": "pnpm --filter=@hirakada/ui build && build && pnpm --filter=landingpage build",
     "build:portfolio": "pnpm --filter=@hirakada/ui build && build && pnpm --filter=portfolio build",
+    "build:all": "pnpm --filter=@hirakada/ui build && pnpm --filter=landingpage build && pnpm --filter=portfolio build",
     "dev:landingpage": "pnpm --filter=landingpage dev",
     "dev:portfolio": "pnpm --filter=portfolio dev",
-    "build": "echo 'Please use a specific build script: pnpm build:landingpage or pnpm build:portfolio'",
     "dev": "echo 'Please use a specific dev script: pnpm dev:landingpage or pnpm dev:portfolio'",
     "install:all": "pnpm install"
   },

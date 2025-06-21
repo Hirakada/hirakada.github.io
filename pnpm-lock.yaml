@@ -6,7 +6,29 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      '@vitejs/plugin-react':
+        specifier: ^4.5.2
+        version: 4.5.2(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1))
+      autoprefixer:
+        specifier: ^10.4.21
+        version: 10.4.21(postcss@8.5.6)
+      eslint:
+        specifier: ^9.25.0
+        version: 9.29.0(jiti@2.4.2)
+      postcss:
+        specifier: ^8.5.5
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^4.1.10
+        version: 4.1.10
+      typescript:
+        specifier: ^5.x.x
+        version: 5.8.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)
 
   apps/landingpage:
     dependencies:
@@ -1509,6 +1531,11 @@ packages:
   typed.js@2.1.0:
     resolution: {integrity: sha512-bDuXEf7YcaKN4g08NMTUM6G90XU25CK3bh6U0THC/Mod/QPKlEt9g/EjvbYB8x2Qwr2p6J6I3NrsoYaVnY6wsQ==}
 
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   undici-types@7.8.0:
     resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
 
@@ -2845,6 +2872,8 @@ snapshots:
       prelude-ls: 1.2.1
 
   typed.js@2.1.0: {}
+
+  typescript@5.8.3: {}
 
   undici-types@7.8.0: {}
 
