@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node ./scripts/generate-sitemap.js",
     "build": "vite build && echo 'User-agent: *\nAllow: /\nSitemap: https://hirakada.com/sitemap.xml' > dist/robots.txt && copy dist/index.html dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -32,7 +33,6 @@
     "globals": "^16.0.0",
     "postcss": "^8.5.5",
     "tailwindcss": "^4.1.10",
-    "vite": "^6.3.5",
-    "vite-plugin-sitemap": "^0.8.2"
+    "vite": "^6.3.5"
   }
 }
