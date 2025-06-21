@@ -10,6 +10,9 @@ import JourneyPage from '../landingpage/src/pages/JourneyPage.jsx';
 import ProjectPage from './src/pages/ProjectsPage.jsx';
 import ProjectDetailPage from './src/pages/ProjectDetailPage.jsx';
 
+import './index.css'
+import '@hirakada/ui/ui.css';
+
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
 const createSlug = (title) => {
