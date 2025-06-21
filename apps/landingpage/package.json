@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && echo 'User-agent: *\nAllow: /\nSitemap: https://hirakada.com/sitemap.xml' > dist/robots.txt && cp dist/index.html dist/404.html",
+    "build": "vite build && echo 'User-agent: *\nAllow: /\nSitemap: https://hirakada.com/sitemap.xml' > dist/robots.txt && copy dist/index.html dist/404.html",
     "lint": "eslint .",
     "preview": "vite preview"
   },

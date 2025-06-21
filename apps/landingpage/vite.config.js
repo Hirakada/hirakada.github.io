@@ -67,5 +67,7 @@ export default defineConfig(async ({ mode }) => {
 
       },
     },
+    optimizeDeps: {
+    }
   };
 });
