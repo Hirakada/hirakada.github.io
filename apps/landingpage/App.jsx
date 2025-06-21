@@ -10,7 +10,7 @@ import JourneyPage from './src/pages/JourneyPage.jsx';
 import ProjectPage from '../portfolio/src/pages/ProjectsPage.jsx';
 import ProjectDetailPage from '../portfolio/src/pages/ProjectDetailPage.jsx';
 
-import './src/styles/index.css';
+import './src/index.css';
 import '@hirakada/ui/ui.css';
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
