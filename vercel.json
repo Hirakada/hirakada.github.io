@@ -1,0 +1,43 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "builds": [
+    {
+      "src": "apps/portfolio/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "pnpm build",
+        "outputDirectory": "dist"
+      }
+    },
+    {
+      "src": "apps/hirakada/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "pnpm build",
+        "outputDirectory": "dist"
+      }
+    },
+    {
+      "src": "packages/ui/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "pnpm build",
+        "outputDirectory": "dist"
+      }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/hirakada",
+      "destination": "/apps/hirakada"
+    },
+    {
+      "source": "/hirakada/:path*",
+      "destination": "/apps/hirakada/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/apps/portfolio/$1"
+    }
+  ]
+}
