@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { createClient } from "@supabase/supabase-js";
 import { OrbitProgress } from 'react-loading-indicators';
 
-import { Header, ScrollToTop } from '@hirakada/ui';
+import { Header, ScrollToTop, Footer } from '@hirakada/ui';
 import Home from './src/pages/Home.jsx';
 import DocPage from './src/pages/Doc.jsx';
 import JourneyPage from './src/pages/JourneyPage.jsx';
@@ -249,6 +249,7 @@ function App() {
                     />
                 </Routes>
             </main>
+            <Footer /> 
         </Router>
     );
 }

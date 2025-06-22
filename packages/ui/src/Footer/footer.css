@@ -1,0 +1,23 @@
+.main-footer {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.copyright-notice {
+    margin-bottom: 10px;
+}
+
+.main-footer a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+.main-footer a:hover {
+    text-decoration: underline;
+}
