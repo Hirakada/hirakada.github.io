@@ -1,5 +1,4 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "builds": [
     {
       "src": "apps/portfolio/package.json",
@@ -21,22 +20,14 @@
       "src": "packages/ui/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "pnpm build",
+        "buildCommand": "pnpm build"
       }
     }
   ],
   "rewrites": [
     {
-      "source": "/hirakada",
-      "destination": "/apps/hirakada"
-    },
-    {
-      "source": "/hirakada/:path*",
-      "destination": "/apps/hirakada/:path*"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/apps/portfolio/$1"
+      "destination": "/apps/hirakada/$1"
     }
   ]
 }
