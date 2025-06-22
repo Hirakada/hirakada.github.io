@@ -3,15 +3,13 @@ import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
 
 export default defineConfig(async ({ mode }) => {
-
   const staticRoutes = [
     '/',
-    '/project',
     '/doc',
     '/journey',
   ];
 
-  const allDynamicRoutes = [...staticRoutes];
+  const allRoutesForSitemap = [...staticRoutes];
 
   return {
     base: '/',
@@ -19,7 +17,7 @@ export default defineConfig(async ({ mode }) => {
       react(),
       Sitemap({
         hostname: 'https://hirakada.com/',
-        dynamicRoutes: allDynamicRoutes,
+        routes: allRoutesForSitemap,
         generateRobotsTxt: false,
       }),
     ],
@@ -27,7 +25,5 @@ export default defineConfig(async ({ mode }) => {
       outDir: 'dist',
       emptyOutDir: true,
     },
-    optimizeDeps: {
-    }
   };
 });
