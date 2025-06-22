@@ -50,6 +50,7 @@ function ProjectPage({ projects, attributes, globalLoading }) {
                                 projectUrl={project.projectUrl}
                                 status={project.projectStatus}
                                 descriptiveTitleSlug={project.descriptiveTitleSlug}
+                                currentApp="portfolio"
                             />
                         ))}
                     </div>

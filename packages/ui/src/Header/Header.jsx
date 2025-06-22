@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
 
-function Header() {
+const HIRAKADA_HOME = "https://hirakada.com";
+const PORTFOLIO_HOME = "https://portfolio.hirakada.com";
+
+function Header({ currentApp }) {
     const [isToggleOpen, setIsToggleOpen] = useState(false);
     const location = useLocation();
 
@@ -29,50 +32,62 @@ function Header() {
         setIsToggleOpen(false);
     };
 
+    const renderNavLink = (to, text, appSpecificPath, targetDomain) => {
+        const isCurrentActive = location.pathname === appSpecificPath;
+
+        if (currentApp === targetDomain) {
+            return (
+                <Link
+                    to={to}
+                    onClick={handleNavLinkClick}
+                    className={isCurrentActive ? 'active' : ''}
+                >
+                    {text}
+                </Link>
+            );
+        } else {
+            const fullUrl = `${targetDomain === 'hirakada' ? HIRAKADA_HOME : PORTFOLIO_HOME}${to}`;
+            return (
+                <a
+                    href={fullUrl}
+                    onClick={handleNavLinkClick}
+                    target="_self"
+                    rel="noopener noreferrer"
+                >
+                    {text}
+                </a>
+            );
+        }
+    };
+
     return (
         <header className={`${isToggleOpen ? 'navMenu--open' : ''}`}>
             <div className="header-content">
-                <Link to="/" onClick={handleNavLinkClick}>
-                    <img src="/img/logo-white.svg" alt="Portfolio Logo" />
-                </Link>
+                {currentApp === 'hirakada' ? (
+                    <Link to="/" onClick={handleNavLinkClick}>
+                        <img src="/img/logo-white.svg" alt="Portfolio Logo" />
+                    </Link>
+                ) : (
+                    <a href={HIRAKADA_HOME} onClick={handleNavLinkClick}>
+                        <img src="/img/logo-white.svg" alt="Portfolio Logo" />
+                    </a>
+                )}
+                
                 <iconify-icon className="menuToggleBtn" icon="material-symbols:menu-rounded" width="24" height="24" onClick={handleToggleOpen}></iconify-icon>
+                
                 <nav className={`navMenu ${isToggleOpen ? 'navMenu--open' : ''}`}>
                     <ul>
                         <li>
-                            <Link
-                                to="/"
-                                onClick={handleNavLinkClick}
-                                className={location.pathname === '/' ? 'active' : ''}
-                            >
-                                My
-                            </Link>
+                            {renderNavLink("/", "My", "/", 'hirakada')}
                         </li>
                         <li>
-                            <Link
-                                to="/project"
-                                onClick={handleNavLinkClick}
-                                className={location.pathname === '/project' ? 'active' : ''}
-                            >
-                                Projects
-                            </Link>
+                            {renderNavLink("/", "Projects", "/", 'portfolio')}
                         </li>
                         <li>
-                            <Link
-                                to="/doc"
-                                onClick={handleNavLinkClick}
-                                className={location.pathname === '/doc' ? 'active' : ''}
-                            >
-                                Documentation
-                            </Link>
+                            {renderNavLink("/doc", "Documentation", "/doc", 'hirakada')}
                         </li>
                         <li>
-                            <Link
-                                to="/journey"
-                                onClick={handleNavLinkClick}
-                                className={location.pathname === '/journey' ? 'active' : ''}
-                            >
-                                Journey
-                            </Link>
+                            {renderNavLink("/journey", "Journey", "/journey", 'hirakada')}
                         </li>
                     </ul>
                 </nav>

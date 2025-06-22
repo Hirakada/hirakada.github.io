@@ -2,14 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { createClient } from "@supabase/supabase-js";
 import { OrbitProgress } from 'react-loading-indicators';
-
 import { Header, ScrollToTop, Footer } from '@hirakada/ui';
-import Home from '../hirakada/src/pages/Home.jsx';
-import DocPage from '../hirakada/src/pages/Doc.jsx';
-import JourneyPage from '../hirakada/src/pages/JourneyPage.jsx';
 import ProjectPage from './src/pages/ProjectsPage.jsx';
 import ProjectDetailPage from './src/pages/ProjectDetailPage.jsx';
-
 import './src/index.css';
 import '@hirakada/ui/ui.css';
 
@@ -28,8 +23,6 @@ function App() {
     const [allProjects, setAllProjects] = useState([]);
     const [allAttributes, setAllAttributes] = useState([]);
     const [appError, setAppError] = useState(null);
-
-    const firstSectionRef = useRef(null);
 
     useEffect(() => {
         if (!globalLoading) {
@@ -169,28 +162,16 @@ function App() {
             <ScrollToTop /> 
 
             {globalLoading && (
-                <div className="flex items-center justify-center w-full fixed top-0 left-0 bg-black z-50 pointer-events-none">
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black z-50 pointer-events-none">
                     <OrbitProgress color="#E0E0E0" size="medium" text="" textColor="" />
                 </div>
             )}
 
-            <Header /> 
+            <Header currentApp="portfolio" /> 
             <main>
                 <Routes>
                     <Route 
                         path="/" 
-                        element={
-                            <Home
-                                projects={allProjects}
-                                attributes={allAttributes}
-                                globalLoading={globalLoading}
-                                firstSectionRef={firstSectionRef} 
-                            />
-                        } 
-                    />
-
-                    <Route 
-                        path="/project" 
                         element={
                             <ProjectPage
                                 projects={allProjects}
@@ -201,31 +182,13 @@ function App() {
                     />
 
                     <Route 
-                        path="/project/:descriptiveTitleSlug" 
+                        path="/detail/:descriptiveTitleSlug" 
                         element={
                             <ProjectDetailPage
                                 projects={allProjects}
                                 globalLoading={globalLoading}
                             />
                         } 
-                    />
-
-                    <Route
-                        path="/doc" 
-                        element={
-                            <DocPage
-                                globalLoading={globalLoading}
-                            />
-                        }
-                    />
-
-                    <Route
-                        path="/journey"
-                        element={
-                            <JourneyPage
-                                globalLoading={globalLoading}
-                            />
-                        }
                     />
 
                     <Route 
@@ -242,7 +205,7 @@ function App() {
                                 <p className="text-2xl mt-4">Page Not Found</p>
                                 <p className="mt-2 text-lg">The page you are looking for does not exist.</p>
                                 <Link to="/" className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
-                                    Go to Home
+                                    Go to Projects Home
                                 </Link>
                             </div>
                         } 

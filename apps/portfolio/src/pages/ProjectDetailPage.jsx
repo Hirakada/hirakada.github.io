@@ -79,7 +79,6 @@ function hslToRgb(h, s, l) {
     return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
-
 function ProjectDetailPage({ projects, globalLoading }) {
     let { descriptiveTitleSlug } = useParams();
     let [project, setProject] = useState(null);
@@ -187,13 +186,14 @@ function ProjectDetailPage({ projects, globalLoading }) {
     } : {};
     
     return (
-        <>  
+        <>    
             <section 
                 ref={spotlightRef} 
                 className="global-spotlight-background" 
                 style={spotlightStyle}
             ></section>
-            <span className='back'><BackButton to="/project" label="Back to Projects"></BackButton></span>
+            {/* Updated BackButton 'to' prop to '/' */}
+            <span className='back'><BackButton to="/" label="Back to Projects"></BackButton></span>
 
             <section className="project-detail-section">
                 {project.coverImage && (
@@ -264,6 +264,7 @@ function ProjectDetailPage({ projects, globalLoading }) {
                                 projectUrl={otherProject.projectUrl}
                                 status={otherProject.projectStatus}
                                 descriptiveTitleSlug={otherProject.descriptiveTitleSlug}
+                                currentApp="portfolio"
                             />
                         ))}
                     </div>

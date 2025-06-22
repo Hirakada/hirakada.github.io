@@ -2,14 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { createClient } from "@supabase/supabase-js";
 import { OrbitProgress } from 'react-loading-indicators';
-
 import { Header, ScrollToTop, Footer } from '@hirakada/ui';
 import Home from './src/pages/Home.jsx';
 import DocPage from './src/pages/Doc.jsx';
 import JourneyPage from './src/pages/JourneyPage.jsx';
-import ProjectPage from '../portfolio/src/pages/ProjectsPage.jsx';
-import ProjectDetailPage from '../portfolio/src/pages/ProjectDetailPage.jsx';
-
 import './src/index.css';
 import '@hirakada/ui/ui.css';
 
@@ -174,7 +170,7 @@ function App() {
                 </div>
             )}
 
-            <Header /> 
+            <Header currentApp="hirakada" /> 
             <main>
                 <Routes>
                     <Route 
@@ -190,27 +186,6 @@ function App() {
                     />
 
                     <Route 
-                        path="/project" 
-                        element={
-                            <ProjectPage
-                                projects={allProjects}
-                                attributes={allAttributes}
-                                globalLoading={globalLoading}
-                            />
-                        } 
-                    />
-
-                    <Route 
-                        path="/project/:descriptiveTitleSlug" 
-                        element={
-                            <ProjectDetailPage
-                                projects={allProjects}
-                                globalLoading={globalLoading}
-                            />
-                        } 
-                    />
-
-                    <Route
                         path="/doc" 
                         element={
                             <DocPage

@@ -4,11 +4,22 @@ import { AttributeTag, ContributorTag, BulletTag } from '../AttributeTag/Attribu
 
 import './cards.css';
 
-function ProjectCard({ id, coverImage, title, contributors, attributes, projectUrl, descriptiveTitleSlug, status }) {
+const PORTFOLIO_HOME = "https://portfolio.hirakada.com";
+
+function ProjectCard({ id, coverImage, title, contributors, attributes, projectUrl, descriptiveTitleSlug, status, currentApp }) {
     const projectSlug = descriptiveTitleSlug;
 
+    const targetUrl = currentApp === 'hirakada'
+        ? `${PORTFOLIO_HOME}/detail/${projectSlug}`
+        : `/detail/${projectSlug}`;
+
+    const CardLinkWrapper = currentApp === 'hirakada' ? 'a' : Link;
+    const linkProps = currentApp === 'hirakada'
+        ? { href: targetUrl, target: "_self", rel: "noopener noreferrer" }
+        : { to: targetUrl };
+
     return (
-        <Link to={`/project/${projectSlug}`} className="project-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <CardLinkWrapper {...linkProps} className="project-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="project">
                 <img loading="lazy" src={coverImage} alt={`Cover image for ${title}`} className="cardImage" />
                 <BulletTag type={status} content={status}></BulletTag>
@@ -58,7 +69,7 @@ function ProjectCard({ id, coverImage, title, contributors, attributes, projectU
                     )}
                 </div>
             </div>
-        </Link>
+        </CardLinkWrapper>
     );
 }
 

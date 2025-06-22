@@ -95,7 +95,7 @@ function Home({ projects, attributes, globalLoading }) {
                     icon="mdi:github" 
                     id="github" 
                 />
-                </div>            
+                </div>           
             </section>
 
             <div className="key-skills-section">
@@ -131,6 +131,7 @@ function Home({ projects, attributes, globalLoading }) {
                                 projectUrl={project.projectUrl}
                                 status={project.projectStatus}
                                 descriptiveTitleSlug={project.descriptiveTitleSlug}
+                                currentApp="hirakada"
                             />
                         ))}
                     </div>
