@@ -7,12 +7,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build:landingpage": "pnpm --filter=@hirakada/ui build && pnpm --filter=landingpage build",
+    "build:hirakada": "pnpm --filter=@hirakada/ui build && pnpm --filter=hirakada build",
     "build:portfolio": "pnpm --filter=@hirakada/ui build && pnpm --filter=portfolio build",
-    "build:all": "pnpm --filter=@hirakada/ui build && pnpm --filter=landingpage build && pnpm --filter=portfolio build",
-    "dev:landingpage": "pnpm --filter=landingpage dev",
+    "build:all": "pnpm --filter=@hirakada/ui build && pnpm --filter=hirakada build && pnpm --filter=portfolio build",
+    "dev:hirakada": "pnpm --filter=hirakada dev",
     "dev:portfolio": "pnpm --filter=portfolio dev",
-    "dev": "echo 'Please use a specific dev script: pnpm dev:landingpage or pnpm dev:portfolio'",
+    "dev": "echo 'Please use a specific dev script: pnpm dev:hirakada or pnpm dev:portfolio'",
     "install:all": "pnpm install"
   },
   "devDependencies": {

@@ -1,0 +1,8 @@
+.social-list {
+    width: fit-content;
+    display: flex;
+    gap: 1.125rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -3,15 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { createClient } from "@supabase/supabase-js";
 import { OrbitProgress } from 'react-loading-indicators';
 
-import { Header, ScrollToTop } from '@hirakada/ui';
-import Home from '../hirakada/src/pages/Home.jsx';
-import DocPage from '../hirakada/src/pages/Doc.jsx';
-import JourneyPage from '../hirakada/src/pages/JourneyPage.jsx';
-import ProjectPage from './src/pages/ProjectsPage.jsx';
-import ProjectDetailPage from './src/pages/ProjectDetailPage.jsx';
+import Header from './components/Header.jsx';
+import Home from '../apps/hirakada/src/pages/Home.jsxo/src/pages/Home.js';
+import ProjectPage from '../apps/portoflio/src/pages/ProjectsPage.jsx';
+import ProjectDetailPage from '../apps/portoflio/src/pages/ProjectDetailPage.jsx';
+import DocPage from '../apps/portoflio/src/pages/Doc.jspage/src/pages/Doc.jsx';
+import JourneyPage from '../apps/hirakada/src/pages/JourneyPage.jsxages/JourneyPage.js';
 
-import './src/index.css';
-import '@hirakada/ui/ui.css';
+import ScrollToTop from './components/Scroll.jsx';
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
