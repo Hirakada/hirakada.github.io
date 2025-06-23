@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+
 import ColorThief from 'colorthief';
 
 import { AttributeTag, ContributorTag, BulletTag, BackButton, OpenButton, ProjectCard } from '@hirakada/ui';
@@ -202,7 +204,9 @@ function ProjectDetailPage({ projects, globalLoading }) {
 
                 <div className="project-detail-content">
                     <h1 className="project-title">{project.title}</h1>
-                    <p className="project-description text-description">{project.description}</p>
+                    <div className="project-description text-description">
+                        <ReactMarkdown>{project.description}</ReactMarkdown>
+                    </div>
                     <BulletTag type={[project.projectStatus]} content={[project.projectStatus]}/>
 
                     {project.attributes && project.attributes.length > 0 && (
