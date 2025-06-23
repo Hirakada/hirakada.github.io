@@ -28,9 +28,8 @@ export default defineConfig(async ({ mode }) => {
                 Sitemap({
                     hostname: 'https://portfolio.hirakada.com/',
                     dynamicRoutes: [ 
-                        '/',
                         '/cgroovy-wbad/',
-                        '/blockchain-wbad/',
+                        '/blockchain-wbad/'
                     ],
                     generateRobotsTxt: false,
                 }),

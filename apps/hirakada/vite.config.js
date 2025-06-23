@@ -5,7 +5,6 @@ import Sitemap from 'vite-plugin-sitemap';
 
 export default defineConfig(async ({ mode }) => {
   const staticRoutes = [
-    '/',
     '/doc',
     '/journey'
   ];
