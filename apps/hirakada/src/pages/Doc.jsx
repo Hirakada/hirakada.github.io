@@ -13,8 +13,8 @@ function DocPage({ globalLoading }) {
         <>
             <section className='welcome-section first-section items-start'>
                 <div className='flex flex-row items-center justify-center'>
-                    <h2>Welcome to</h2>
-                    <h2 className='domain-name'>{domain}</h2>
+                    <h1>Welcome to</h2>
+                    <h1 className='domain-name'>{domain}</h2>
                 </div>
 
                 <p className='section-description text-description'>
