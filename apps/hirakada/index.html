@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" style="background-color: #101010; color: #E0E0E0;"> <head>
+<html lang="en" style="background-color: #101010; color: #E0E0E0;"> 
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Looking for emerging digital talent? Discover my journey in Graphic Design, UI, Frontend Dev, and Digital Marketing projects. Explore now!" />
@@ -42,11 +43,38 @@
         "description": "Professional portfolio and information for Hizkya Raka Priananda, also known as Hirakada, specializing in Graphic Design, UI, Frontend Development, and Digital Marketing."
       }
     </script>
+    
+    <style>
+      /* Ensure body and the root div of your React app are dark immediately */
+      body, #root {
+        background-color: #101010; 
+        color: #E0E0E0;            
+        /* This is the key part to prevent flashes of unstyled content: */
+        visibility: hidden; /* Hide the content completely */
+        opacity: 0;         /* Make it transparent */
+        /* Smooth transition for when content becomes visible */
+        transition: visibility 0s linear 0.3s, opacity 0.3s linear; 
+        /* The visibility transition has a delay (0.3s) so opacity can animate first */
+      }
+      
+      /* Rule to make content visible once JavaScript is ready */
+      body.js-loaded #root, body.js-loaded {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s; /* Remove transition delay when revealing */
+      }
+    </style>
 
     <link rel="stylesheet" href="/src/index.css" /> 
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // This script runs very quickly after the main JS (main.jsx) starts.
+      // It signals that the page is ready to be shown.
+      document.body.classList.add('js-loaded');
+    </script>
   </body>
 </html>
