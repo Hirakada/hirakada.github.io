@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" style="background-color: #101010; color: #E0E0E0;">
-<head>
+<html lang="en" style="background-color: #101010; color: #E0E0E0;"> <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Looking for emerging digital talent? Discover my journey in Graphic Design, UI, Frontend Dev, and Digital Marketing projects. Explore now!" />
@@ -19,7 +18,6 @@
     <meta property="og:url" content="https://hirakada.com/" />
     <meta property="og:title" content="Hirakada | Digital Talent" />
     <meta property="og:description" content="Looking for emerging digital talent? Discover my journey in Graphic Design, UI, Frontend Dev, and Digital Marketing projects. Explore now!" />
-
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -27,7 +25,7 @@
     <meta property="twitter:url" content="https://hirakada.com/" />
     <meta property="twitter:title" content="Hirakada | Digital Talent" />
     <meta property="twitter:description" content="Looking for emerging digital talent? Discover my journey in Graphic Design, UI, Frontend Dev, and Digital Marketing projects. Explore now!" />
-
+    
     <title>Hirakada | Digital Talent</title>
     <script type="application/ld+json">
       {
@@ -45,27 +43,10 @@
       }
     </script>
 
-    <style>
-        /* Hides the body and root element until JavaScript loads and reveals them */
-        body { visibility: hidden; opacity: 0; }
-        #root { visibility: hidden; opacity: 0; }
-    </style>
-
-    <link rel="stylesheet" href="/src/index.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="/src/index.css" /> 
+  </head>
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-
-    <script>
-        // This script runs after your main React app's script has started
-        // It makes the body and root element visible, allowing the React app (and its spinner) to appear
-        document.body.classList.add('js-loaded');
-        const rootElement = document.getElementById('root');
-        if (rootElement) {
-            rootElement.style.visibility = 'visible';
-            rootElement.style.opacity = '1';
-        }
-    </script>
-</body>
+  </body>
 </html>
