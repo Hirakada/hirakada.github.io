@@ -45,7 +45,6 @@ export default defineConfig(async ({ mode }) => {
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
     const staticRoutes = [
-        '/',
         '/cgroovy-wbad/',
         '/blockchain-wbad/',
     ];
