@@ -43,6 +43,29 @@
         "description": "Professional portfolio and information for Hizkya Raka Priananda, also known as Hirakada, specializing in Graphic Design, UI, Frontend Development, and Digital Marketing."
       }
     </script>
+
+    <script>
+      // This script runs before React loads
+      try {
+        const theme = localStorage.getItem("theme"); // Assuming you store your theme preference as 'theme'
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+
+        // Determine the effective theme (user preference takes precedence, then system preference)
+        const effectiveTheme = theme === "system" ? systemTheme : theme; 
+
+        // Apply the class to the html element
+        if (effectiveTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark"); // Ensure light mode is default if no dark preference
+        }
+      } catch (error) {
+        console.error("Theme script error:", error);
+      }
+    </script>
   </head>
   <body style="background-color: #101010;">
     <div id="root"></div>
