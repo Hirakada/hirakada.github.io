@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hirakada/ui": "workspace:*",
+    "@vercel/speed-insights": "^1.2.0",
     "colorthief": "^2.6.0",
     "iconify-icon": "^3.0.0",
     "react": "^19.1.0",
