@@ -6,7 +6,7 @@ export default defineConfig(async ({ mode }) => {
   const staticRoutes = [
     '/',
     '/doc',
-    '/journey',
+    '/journey'
   ];
 
   const allRoutesForSitemap = [...staticRoutes];

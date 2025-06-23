@@ -1,8 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/project-cgroovy/(.*)",
+      "source": "/cgroovy-wbad/(.*)",
       "destination": "https://project-cgroovy.vercel.app/$1"
+    }, {
+      "source": "/blockchain-wbad/(.*)",
+      "destination": "https://blockchain-purple.vercel.app//$1"
     }
   ],
   "redirects": [
