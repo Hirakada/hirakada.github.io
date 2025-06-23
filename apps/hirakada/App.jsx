@@ -162,7 +162,7 @@ function App() {
     }
 
     return (
-        <div className='bg-[#101010]'>
+        <>
             <Router basename="/">
                 <ScrollToTop /> 
 
@@ -229,7 +229,7 @@ function App() {
                 <Footer /> 
             </Router>
             <Analytics />
-        </div>
+        </>
     );
 }
 
