@@ -44,35 +44,12 @@
       }
     </script>
     
-    <style>
-      /* Ensure body and the root div of your React app are dark immediately */
-      body, #root {
-        background-color: #101010; 
-        color: #E0E0E0;            
-        /* This is the key part to prevent flashes of unstyled content: */
-        visibility: hidden; 
-        opacity: 0;         
-        /* Smooth transition for when content becomes visible */
-        transition: visibility 0s linear 0.3s, opacity 0.3s linear; 
-      }
-      
-      /* Rule to make content visible once JavaScript is ready */
-      body.js-loaded #root, body.js-loaded {
-        visibility: visible;
-        opacity: 1;
-        transition-delay: 0s; 
-      }
-    </style>
-
     <script type="module" crossorigin src="/assets/index-C-OFgTpy.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BKA1tOrv.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   </head>
-  <body style="background-color: #101010;"> 
+  <body> 
     <div id="root"></div>
     
-    <script>
-      document.body.classList.add('js-loaded');
-    </script>
-  </body>
+    </body>
 </html>
