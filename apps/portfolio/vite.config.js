@@ -17,6 +17,7 @@ export default defineConfig(async ({ mode }) => {
 
   const staticRoutes = [
     '/',
+    '/project-cgroovy/',
   ];
 
   let dynamicRoutes = [];
@@ -50,6 +51,6 @@ export default defineConfig(async ({ mode }) => {
       outDir: 'dist',
       emptyOutDir: true,
     },
-    optimizeDeps: {}, 
+    optimizeDeps: {},
   };
 });
