@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/project-cgroovy/(.*)",
+      "destination": "https://project-cgroovy.vercel.app//$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
