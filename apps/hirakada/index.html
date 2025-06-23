@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="en" style="background-color: #101010; color: #E0E0E0;"> <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Looking for emerging digital talent? Discover my journey in Graphic Design, UI, Frontend Dev, and Digital Marketing projects. Explore now!" />
@@ -44,30 +43,9 @@
       }
     </script>
 
-    <script>
-      // This script runs before React loads
-      try {
-        const theme = localStorage.getItem("theme"); // Assuming you store your theme preference as 'theme'
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-          .matches
-          ? "dark"
-          : "light";
-
-        // Determine the effective theme (user preference takes precedence, then system preference)
-        const effectiveTheme = theme === "system" ? systemTheme : theme; 
-
-        // Apply the class to the html element
-        if (effectiveTheme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark"); // Ensure light mode is default if no dark preference
-        }
-      } catch (error) {
-        console.error("Theme script error:", error);
-      }
-    </script>
+    <link rel="stylesheet" href="/src/index.css" /> 
   </head>
-  <body style="background-color: #101010;">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
