@@ -1,6 +1,7 @@
-import { defineConfig, loadEnv } from 'vite';
+// apps/hirakada/vite.config.js
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import Sitemap from 'vite-plugin-sitemap';
+import Sitemap from 'vite-plugin-sitemap'; 
 
 export default defineConfig(async ({ mode }) => {
   const staticRoutes = [
@@ -17,7 +18,7 @@ export default defineConfig(async ({ mode }) => {
       react(),
       Sitemap({
         hostname: 'https://hirakada.com/',
-        routes: allRoutesForSitemap,
+        dynamicRoutes: allRoutesForSitemap, 
         generateRobotsTxt: false,
       }),
     ],
