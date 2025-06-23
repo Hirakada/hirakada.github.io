@@ -18,7 +18,7 @@ export default defineConfig(async ({ mode }) => {
   const staticRoutes = [
     '/',
     '/cgroovy-wbad/',
-    '/blockchain-wbad'
+    '/blockchain-wbad/',
   ];
 
   let dynamicRoutes = [];
