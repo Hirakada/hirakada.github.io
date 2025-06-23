@@ -9,11 +9,11 @@
     <meta name="robots" content="index, follow" />
 
     <link rel="canonical" href="https://hirakada.com/" />
-    <link rel="icon" type="image/png" href="/public/img/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/public/img/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/public/img/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/public/img/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/public/img/favicon/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96-DmJ5b7_7.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-DnVATF10.svg" />
+    <link rel="shortcut icon" href="/assets/favicon-CHOnUdXc.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-DvbO2kx8.png" />
+    <link rel="manifest" href="/assets/site-iAeM31lc.webmanifest" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hirakada.com/" />
@@ -50,30 +50,28 @@
         background-color: #101010; 
         color: #E0E0E0;            
         /* This is the key part to prevent flashes of unstyled content: */
-        visibility: hidden; /* Hide the content completely */
-        opacity: 0;         /* Make it transparent */
+        visibility: hidden; 
+        opacity: 0;         
         /* Smooth transition for when content becomes visible */
         transition: visibility 0s linear 0.3s, opacity 0.3s linear; 
-        /* The visibility transition has a delay (0.3s) so opacity can animate first */
       }
       
       /* Rule to make content visible once JavaScript is ready */
       body.js-loaded #root, body.js-loaded {
         visibility: visible;
         opacity: 1;
-        transition-delay: 0s; /* Remove transition delay when revealing */
+        transition-delay: 0s; 
       }
     </style>
 
-    <link rel="stylesheet" href="/src/index.css" /> 
+    <script type="module" crossorigin src="/assets/index-C-OFgTpy.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BKA1tOrv.css">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   </head>
-  <body>
+  <body style="background-color: #101010;"> 
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
     
     <script>
-      // This script runs very quickly after the main JS (main.jsx) starts.
-      // It signals that the page is ready to be shown.
       document.body.classList.add('js-loaded');
     </script>
   </body>
