@@ -173,7 +173,7 @@ function App() {
                 )}
 
                 <Header currentApp="hirakada" /> 
-                <main>
+                <main className='bg-[#101010]'>
                     <Routes>
                         <Route 
                             path="/" 

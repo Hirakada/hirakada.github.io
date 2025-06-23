@@ -10,7 +10,7 @@ function DocPage({ globalLoading }) {
     const domain = window.location.hostname;
 
     return (
-        <>
+        <div className='bg-[#101010]'>
             <section className='welcome-section first-section items-start'>
                 <div className='flex flex-row items-center justify-center'>
                     <h1>Welcome to</h1>
@@ -25,7 +25,7 @@ function DocPage({ globalLoading }) {
             <section className='web-section'>
 
             </section>
-        </>
+        </div>
     );
 }
 
