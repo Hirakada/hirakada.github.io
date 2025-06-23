@@ -7,6 +7,7 @@ import ProjectPage from './src/pages/ProjectsPage.jsx';
 import ProjectDetailPage from './src/pages/ProjectDetailPage.jsx';
 import './src/index.css';
 import '@hirakada/ui/ui.css';
+import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
@@ -216,6 +217,7 @@ function App() {
                 </main>
                 <Footer /> 
             </Router>
+            <Analytics />
             <SpeedInsights/>
         </>
     );
