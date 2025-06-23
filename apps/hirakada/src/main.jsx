@@ -6,7 +6,7 @@ import App from '../App.jsx'
 import "iconify-icon";
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )
