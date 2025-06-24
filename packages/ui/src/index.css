@@ -85,13 +85,6 @@ html {
     overflow-x: hidden;
 }
 
-*, *::before, *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-    /* animation: appearOnOpen var(--gentle-transition); */
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background: var(--color-background);

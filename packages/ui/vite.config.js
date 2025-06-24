@@ -27,6 +27,12 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           'react-router-dom': 'ReactRouterDOM',
         },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') {
+            return 'ui.css';
+          }
+          return assetInfo.name;
+        },
       },
     },
   },

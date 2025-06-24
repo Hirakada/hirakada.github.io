@@ -5,7 +5,6 @@ import { OrbitProgress } from 'react-loading-indicators';
 import { Header, ScrollToTop, Footer } from '@hirakada/ui';
 import ProjectPage from './src/pages/ProjectsPage.jsx';
 import ProjectDetailPage from './src/pages/ProjectDetailPage.jsx';
-import './src/index.css';
 import '@hirakada/ui/ui.css';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react";

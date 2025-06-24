@@ -6,7 +6,6 @@ import { Header, ScrollToTop, Footer } from '@hirakada/ui';
 import Home from './src/pages/Home.jsx';
 import DocPage from './src/pages/Doc.jsx';
 import JourneyPage from './src/pages/JourneyPage.jsx';
-import './src/index.css';
 import '@hirakada/ui/ui.css';
 import { Analytics } from "@vercel/analytics/react"
 

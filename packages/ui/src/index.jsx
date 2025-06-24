@@ -1,3 +1,4 @@
+import './index.css';
 
 export { AttributeTag, ContributorTag, BulletTag } from './AttributeTag/AttributeTag';
 export { SocialButton, BackButton, OpenButton } from './Buttons/Buttons';
