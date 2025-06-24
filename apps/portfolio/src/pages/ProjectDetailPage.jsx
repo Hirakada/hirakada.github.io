@@ -203,12 +203,11 @@ function ProjectDetailPage({ projects, globalLoading }) {
                 )}
 
                 <div className="project-detail-content">
+                    <BulletTag type={[project.projectStatus]} content={[project.projectStatus]}/>
                     <h1 className="project-title">{project.title}</h1>
                     <div className="project-description text-description">
                         <ReactMarkdown>{project.description}</ReactMarkdown>
                     </div>
-                    <BulletTag type={[project.projectStatus]} content={[project.projectStatus]}/>
-
                     {project.attributes && project.attributes.length > 0 && (
                         <div className="project-attributes">
                             <h3>Tools:</h3>
