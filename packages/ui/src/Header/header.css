@@ -21,13 +21,6 @@ header {
     border-bottom: 1.6px solid rgba(var(--color-secondary-rgb), .1);
 }
 
-header,
-header * {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-}
-
 header .header-content {
     display: flex;
     align-items: center;
