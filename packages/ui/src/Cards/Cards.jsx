@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AttributeTag, ContributorTag, BulletTag } from '../AttributeTag/AttributeTag'
 
 import './cards.css';
+import '../index.css'
 
 const PORTFOLIO_HOME = "https://portfolio.hirakada.com";
 

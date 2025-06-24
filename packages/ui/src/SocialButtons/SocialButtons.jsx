@@ -1,6 +1,7 @@
 import React from 'react';
 import { SocialButton } from '../Buttons/Buttons'; 
 import './home.css';
+import '../index.css'
 
 function SocialButtons() {
   return (

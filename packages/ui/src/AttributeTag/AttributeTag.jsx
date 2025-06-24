@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './attribute-tag.css';
+import '../index.css'
 
 function AttributeTag({ iconUrl, name, type }) {
   return (

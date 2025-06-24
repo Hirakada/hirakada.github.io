@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './buttons.css';
+import '../index.css'
 
 function SocialButton({ icon, href, id }) {
   return (
