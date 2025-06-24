@@ -2,25 +2,6 @@
     --header-img-height: 2rem;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    z-index: 5;
-    border-radius: 0;
-    min-height: calc(var(--header-img-height) + (2 * var(--header-padding-y)));
-    height: auto;
-    transition: all var(--quick-transition);
-    position: fixed;
-    top: 0;
-
-    background-color: rgba(var(--color-background-rgb), 0.85);
-    backdrop-filter: blur(1rem);
-    -webkit-backdrop-filter: blur(1rem);
-    border-bottom: 1.6px solid rgba(var(--color-secondary-rgb), .1);
-}
-
 header .header-content {
     display: flex;
     align-items: center;
