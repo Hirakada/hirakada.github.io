@@ -71,7 +71,7 @@ function Home({ projects, attributes, globalLoading }) {
     }, [projects, attributes, globalLoading]);
 
     return (
-        <div className='bg-[#101010]'>
+        <>
             <section className="hero-section first-section">
                 <div className="greeting">
                     <h2>Hi! I am</h2>
@@ -139,7 +139,7 @@ function Home({ projects, attributes, globalLoading }) {
                     null
                 )}
             </section>
-        </div>
+        </>
     );
 }
 
