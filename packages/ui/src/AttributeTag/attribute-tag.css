@@ -15,7 +15,6 @@
 
 .tag-item img {
     max-height: 20px;
-    width: 100%;
     margin-right: 5px;
     flex-shrink: 0;
 }
