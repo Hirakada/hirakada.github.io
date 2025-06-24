@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './header.css';
-import '';
 
 const HIRAKADA_HOME = "https://hirakada.com";
 const PORTFOLIO_HOME = "https://portfolio.hirakada.com";
