@@ -30,7 +30,7 @@ function ProjectCard({ id, coverImage, title, contributors, attributes, projectU
                         <ul className={`attributesList ${attributes.length > 3 ? 'enabled-info' : ''}`}>
                             {attributes.slice(0, 3).map(attribute => (
                                 <li key={attribute.id} className="attributeItem">
-                                    {attribute.name}
+                                    <img src={attribute.iconUrl} alt={attribute.name} />
                                 </li>
                             ))}
 
