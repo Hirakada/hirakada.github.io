@@ -66,17 +66,3 @@
     width: 100%;
     box-sizing: border-box;
 }
-
-.category-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(1rem, 2vw, 1.75rem);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.normal-grid {
-    margin-top: 2rem;
-}
