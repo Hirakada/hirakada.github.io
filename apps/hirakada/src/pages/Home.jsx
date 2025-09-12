@@ -118,7 +118,7 @@ function Home({ projects, attributes, globalLoading }) {
             <section className='featured-projects-section'>
                 <h2>Featured Projects</h2>
                 <p className="section-description text-description">Here's a curated selection of my most impactful and innovative projects, highlighting key skills and creative solutions.</p>
-                <div className="category-section">
+                <div className="category-grid">
                     <AttributeTag
                         name="UI/UX Design"
                     />
