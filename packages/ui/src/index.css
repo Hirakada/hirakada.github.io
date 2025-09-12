@@ -216,7 +216,7 @@ header {
     min-height: calc(var(--header-img-height) + (2 * var(--header-padding-y)));
     height: auto;
     transition: all var(--quick-transition);
-    position: fixed;
+    position: sticky;
 
     background-color: rgba(var(--color-background-rgb), 0.85);
     backdrop-filter: blur(1rem);
