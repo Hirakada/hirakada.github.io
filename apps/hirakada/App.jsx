@@ -64,12 +64,12 @@ function App() {
                             *,
                             project_attributes (
                                 attributes (
-                                    id, name, type, icon_url
+                                    *
                                 )
                             ),
                             project_contributors (
                                 contributors (
-                                    id, name, profile_image_url, website_url, linkedin_url
+                                    *
                                 )
                             ),
                             project_images (
@@ -113,6 +113,7 @@ function App() {
 
                         return {
                             id: project.id,
+                            category: project.category,
                             title: project.title,
                             description: project.long_description,
                             coverImage: coverImage,

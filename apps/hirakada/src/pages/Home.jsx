@@ -14,7 +14,7 @@ function Home({ projects, attributes, globalLoading }) {
     useEffect(() => {
         if (!globalLoading && roleEl.current) {
             const autoTyped = new Typed(roleEl.current, {
-                strings: ["UI/UX Designer", "Frontend Developer", "Graphic Designer", "Digital Marketer"],
+                strings: ["UI/UX Designer", "Web Developer", "Graphic Designer"],
                 typeSpeed: 80,
                 backSpeed: 50,
                 backDelay: 1000,
@@ -118,6 +118,17 @@ function Home({ projects, attributes, globalLoading }) {
             <section className='featured-projects-section'>
                 <h2>Featured Projects</h2>
                 <p className="section-description text-description">Here's a curated selection of my most impactful and innovative projects, highlighting key skills and creative solutions.</p>
+                <div className="category-section">
+                    <AttributeTag
+                        name="UI/UX Design"
+                    />
+                    <AttributeTag
+                        name="Web Development"
+                    />
+                    <AttributeTag
+                        name="Graphic Design"
+                    />
+                </div>
                 {featuredProjects.length > 0 ? (
                     <div className="normal-grid">
                         {featuredProjects.map(project => (
