@@ -8,6 +8,7 @@ import DocPage from './src/pages/Doc.jsx';
 import JourneyPage from './src/pages/JourneyPage.jsx';
 import '@hirakada/ui/ui.css';
 import { Analytics } from "@vercel/analytics/react"
+import React from 'react';
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
@@ -167,9 +168,9 @@ function App() {
                 <ScrollToTop /> 
 
                 {globalLoading && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black z-[9999]">
-                    <OrbitProgress color="#E0E0E0" size="medium" />
-                </div>
+                    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black z-50 pointer-events-none">
+                        <OrbitProgress color="#E0E0E0" size="medium" text="" textColor="" />
+                    </div>
                 )}
 
                 <Header currentApp="hirakada" /> 
