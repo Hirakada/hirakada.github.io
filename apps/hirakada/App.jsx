@@ -167,9 +167,9 @@ function App() {
                 <ScrollToTop /> 
 
                 {globalLoading && (
-                    <div className="flex items-center justify-center w-full fixed top-0 left-0 bg-black z-50 pointer-events-none">
-                        <OrbitProgress color="#E0E0E0" size="medium" text="" textColor="" />
-                    </div>
+                <div className="fixed inset-0 flex items-center justify-center bg-black z-[9999]">
+                    <OrbitProgress color="#E0E0E0" size="medium" />
+                </div>
                 )}
 
                 <Header currentApp="hirakada" /> 
